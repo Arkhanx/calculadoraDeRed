@@ -59,49 +59,59 @@ function Calcular(){
     document.getElementById("resultado").innerHTML = octeto1 + " - " + octeto2 + " - " +
     octeto3 + " - " + octeto4;
     
-    
     mascaracorta = parseInt(document.getElementById('mascaracorta').value);
     
     
     
-    mascarabin1 = ("00000000" + "11111111111111111111111111111111111").slice(0+mascaracorta, 8+mascaracorta);   
+    mascarabin1 = ("00000000" + "11111111111111111111111111111111").slice(0+mascaracorta, 8+mascaracorta);   
     
     //console.log(mascarabin1);
     
     mascarabininv1 = mascarabin1.split("").reverse().join("");
         
-    mascara1 = parseInt(0 + mascarabininv1.substring(0, 8),2);
+    mascara1 = parseInt(mascarabininv1.substring(0, 8),2);
     document.getElementById("mascara1").value = mascara1;
     
     //console.log(mascara1);
     
+    /* document.getElementById("mascara2").value = 0;
+    document.getElementById("mascara3").value = 0;
+    document.getElementById("mascara4").value = 0;
+    */
+    
     if(mascara1 == 255){
         
         mascaracorta = mascaracorta - 8;    
-        mascarabin2 = ("00000000" + "11111111111111111111111111111111111").slice(0+mascaracorta, 8+mascaracorta);
+        mascarabin2 = ("00000000" + "11111111111111111111111111111111").slice(0+mascaracorta, 8+mascaracorta);
         mascarabininv2 = mascarabin2.split("").reverse().join("");
-        mascara2 = parseInt(0 + mascarabininv2.substring(0, 8),2);
+        mascara2 = parseInt(mascarabininv2.substring(0, 8),2);
         document.getElementById("mascara2").value = mascara2;
+    }
+    else {
+        document.getElementById("mascara2").value = 0;
     }
             
     if(mascara2 == 255){                    
         mascaracorta = mascaracorta - 8;    
-        mascarabin3 = ("00000000" + "11111111111111111111111111111111111").slice(0+mascaracorta, 8+mascaracorta);
+        mascarabin3 = ("00000000" + "11111111111111111111111111111111").slice(0+mascaracorta, 8+mascaracorta);
         mascarabininv3 = mascarabin3.split("").reverse().join("");
-        mascara3 = parseInt(0 + mascarabininv3.substring(0, 8),2);
+        mascara3 = parseInt(mascarabininv3.substring(0, 8),2);
         document.getElementById("mascara3").value = mascara3;
         
+    }
+    else {
+        document.getElementById("mascara3").value = 0;
     }
     
     if(mascara3 == 255){                    
         mascaracorta = mascaracorta - 8;    
-        mascarabin4 = ("00000000" + "11111111111111111111111111111111111").slice(0+mascaracorta, 8+mascaracorta);
+        mascarabin4 = ("00000000" + "11111111111111111111111111111111").slice(0+mascaracorta, 8+mascaracorta);
         mascarabininv4 = mascarabin4.split("").reverse().join("");
-        mascara4 = parseInt(0 + mascarabininv4.substring(0, 8),2);
+        mascara4 = parseInt(mascarabininv4.substring(0, 8),2);
         document.getElementById("mascara4").value = mascara4;
         
     }
-    
-    
-    //console.log(mascarabin.substring(0, 8).length)
+    else {
+        document.getElementById("mascara4").value = 0;
+    }
 };
