@@ -46,6 +46,81 @@ function Calcular(){
     //Mascara corta es igual al dato introducido en el input "mascaracorta"
     mascaracorta = parseInt(document.getElementById('mascaracorta').value);
     
+      
+   /*Convertimos los decimales introducidos en el input mascara1 a binario para luego sumar cada elemento de la cadena 
+    por separado, es decir, si input mascara1 = 192 entonces a binario 11000000 entonces 1+1+0+0+0+0+0+0 = 2*/
+    var prueba1 = parseInt(document.getElementById('mascara1').value);
+    var prueba3 = prueba1.toString(2);
+    var prueba2 =("0000000" + prueba3).slice(-8);
+    var holamundo1 = 
+    parseInt(prueba2.substring(0,1))
+    +parseInt(prueba2.substring(1,2))
+    +parseInt(prueba2.substring(2,3))
+    +parseInt(prueba2.substring(3,4))
+    +parseInt(prueba2.substring(4,5))
+    +parseInt(prueba2.substring(5,6))
+    +parseInt(prueba2.substring(6,7))
+    +parseInt(prueba2.substring(7,8));
+            
+    /*Convertimos los decimales introducidos en el input mascara2 a binario para luego sumar cada elemento de la cadena 
+    por separado, es decir, si input mascara2 = 192 entonces a binario 11000000 entonces 1+1+0+0+0+0+0+0 = 2*/    
+    var prueba1 = parseInt(document.getElementById('mascara2').value);
+    var prueba3 = prueba1.toString(2);
+    var prueba2 =("0000000" + prueba3).slice(-8);
+    var holamundo2 = 
+    parseInt(prueba2.substring(0,1))
+    +parseInt(prueba2.substring(1,2))
+    +parseInt(prueba2.substring(2,3))
+    +parseInt(prueba2.substring(3,4))
+    +parseInt(prueba2.substring(4,5))
+    +parseInt(prueba2.substring(5,6))
+    +parseInt(prueba2.substring(6,7))
+    +parseInt(prueba2.substring(7,8));
+            
+    /*Convertimos los decimales introducidos en el input mascara3 a binario para luego sumar cada elemento de la cadena 
+    por separado, es decir, si input mascara3 = 192 entonces a binario 11000000 entonces 1+1+0+0+0+0+0+0 = 2*/
+    var prueba1 = parseInt(document.getElementById('mascara3').value);
+    var prueba3 = prueba1.toString(2);
+    var prueba2 =("0000000" + prueba3).slice(-8);
+    var holamundo3 = 
+    parseInt(prueba2.substring(0,1))
+    +parseInt(prueba2.substring(1,2))
+    +parseInt(prueba2.substring(2,3))
+    +parseInt(prueba2.substring(3,4))
+    +parseInt(prueba2.substring(4,5))
+    +parseInt(prueba2.substring(5,6))
+    +parseInt(prueba2.substring(6,7))
+    +parseInt(prueba2.substring(7,8));
+            
+    /*Convertimos los decimales introducidos en el input mascara4 a binario para luego sumar cada elemento de la cadena 
+    por separado, es decir, si input mascara4 = 192 entonces a binario 11000000 entonces 1+1+0+0+0+0+0+0 = 2*/
+    var prueba1 = parseInt(document.getElementById('mascara4').value);
+    var prueba3 = prueba1.toString(2);
+    var prueba2 =("0000000" + prueba3).slice(-8);
+    var holamundo4 = 
+    parseInt(prueba2.substring(0,1))
+    +parseInt(prueba2.substring(1,2))
+    +parseInt(prueba2.substring(2,3))
+    +parseInt(prueba2.substring(3,4))
+    +parseInt(prueba2.substring(4,5))
+    +parseInt(prueba2.substring(5,6))
+    +parseInt(prueba2.substring(6,7))
+    +parseInt(prueba2.substring(7,8));
+            
+    console.log(holamundo1+holamundo2+holamundo3+holamundo4);
+    /*if (document.getElementById('mascara1').value == ""){holamundo1 = 0;}
+    if (document.getElementById('mascara2').value == ""){holamundo2 = 0;}
+    if (document.getElementById('mascara3').value == ""){holamundo3 = 0;}
+    if (document.getElementById('mascara4').value == ""){holamundo4 = 0;}*/
+    
+    var superreultado = (holamundo1+holamundo2+holamundo3+holamundo4);
+    
+    if(superreultado != mascaracorta) {document.getElementById("mascaracorta").value = superreultado;}
+    
+    else {
+    
+    
+    
     /*"mascarabin1" es igual a 00000000 inicialmente, pero si mascaracorta = 1 entonces un cero se mueve hacia
     la izquieda y desaparece al tiempo que aparece un uno desde la derecha osea quedaria 00000001*/ 
     mascarabin1 = ("00000000" + "11111111111111111111111111111111").slice(0+mascaracorta, 8+mascaracorta);   
@@ -56,6 +131,9 @@ function Calcular(){
     
     /*mascara1 es igual a mascarabininv1 convertida de string a entero y de binario a decimal, osea que si
     mascarabininv1 = 101000000 entonces mascara1 = 192 */
+    
+    
+    
     mascara1 = parseInt(mascarabininv1.substring(0, 8),2);
     
     
@@ -119,73 +197,11 @@ function Calcular(){
     }
     else {document.getElementById("mascara4").value = 0;}
 
-   /*Convertimos los decimales introducidos en el input mascara1 a binario para luego sumar cada elemento de la cadena 
-    por separado, es decir, si input mascara1 = 192 entonces a binario 11000000 entonces 1+1+0+0+0+0+0+0 = 2*/
-    var prueba1 = parseInt(document.getElementById('mascara1').value);
-    var prueba3 = prueba1.toString(2);
-    var prueba2 =("0000000" + prueba3).slice(-8);
-    var holamundo1 = 
-    parseInt(prueba2.substring(0,1))
-    +parseInt(prueba2.substring(1,2))
-    +parseInt(prueba2.substring(2,3))
-    +parseInt(prueba2.substring(3,4))
-    +parseInt(prueba2.substring(4,5))
-    +parseInt(prueba2.substring(5,6))
-    +parseInt(prueba2.substring(6,7))
-    +parseInt(prueba2.substring(7,8));
-            
-    /*Convertimos los decimales introducidos en el input mascara2 a binario para luego sumar cada elemento de la cadena 
-    por separado, es decir, si input mascara2 = 192 entonces a binario 11000000 entonces 1+1+0+0+0+0+0+0 = 2*/    
-    var prueba1 = parseInt(document.getElementById('mascara2').value);
-    var prueba3 = prueba1.toString(2);
-    var prueba2 =("0000000" + prueba3).slice(-8);
-    var holamundo2 = 
-    parseInt(prueba2.substring(0,1))
-    +parseInt(prueba2.substring(1,2))
-    +parseInt(prueba2.substring(2,3))
-    +parseInt(prueba2.substring(3,4))
-    +parseInt(prueba2.substring(4,5))
-    +parseInt(prueba2.substring(5,6))
-    +parseInt(prueba2.substring(6,7))
-    +parseInt(prueba2.substring(7,8));
-            
-    /*Convertimos los decimales introducidos en el input mascara3 a binario para luego sumar cada elemento de la cadena 
-    por separado, es decir, si input mascara3 = 192 entonces a binario 11000000 entonces 1+1+0+0+0+0+0+0 = 2*/
-    var prueba1 = parseInt(document.getElementById('mascara3').value);
-    var prueba3 = prueba1.toString(2);
-    var prueba2 =("0000000" + prueba3).slice(-8);
-    var holamundo3 = 
-    parseInt(prueba2.substring(0,1))
-    +parseInt(prueba2.substring(1,2))
-    +parseInt(prueba2.substring(2,3))
-    +parseInt(prueba2.substring(3,4))
-    +parseInt(prueba2.substring(4,5))
-    +parseInt(prueba2.substring(5,6))
-    +parseInt(prueba2.substring(6,7))
-    +parseInt(prueba2.substring(7,8));
-            
-    /*Convertimos los decimales introducidos en el input mascara4 a binario para luego sumar cada elemento de la cadena 
-    por separado, es decir, si input mascara4 = 192 entonces a binario 11000000 entonces 1+1+0+0+0+0+0+0 = 2*/
-    var prueba1 = parseInt(document.getElementById('mascara4').value);
-    var prueba3 = prueba1.toString(2);
-    var prueba2 =("0000000" + prueba3).slice(-8);
-    var holamundo4 = 
-    parseInt(prueba2.substring(0,1))
-    +parseInt(prueba2.substring(1,2))
-    +parseInt(prueba2.substring(2,3))
-    +parseInt(prueba2.substring(3,4))
-    +parseInt(prueba2.substring(4,5))
-    +parseInt(prueba2.substring(5,6))
-    +parseInt(prueba2.substring(6,7))
-    +parseInt(prueba2.substring(7,8));
-            
-    /*if (document.getElementById('mascara1').value == ""){holamundo1 = 0;}
-    if (document.getElementById('mascara2').value == ""){holamundo2 = 0;}
-    if (document.getElementById('mascara3').value == ""){holamundo3 = 0;}
-    if (document.getElementById('mascara4').value == ""){holamundo4 = 0;}*/
-            
-    console.log(holamundo1+holamundo2+holamundo3+holamundo4);
+    
+    }
+    
         
+    
 
     
 };
