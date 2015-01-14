@@ -59,6 +59,8 @@ function Calcular(){
     document.getElementById("resultado").innerHTML = octeto1 + " - " + octeto2 + " - " +
     octeto3 + " - " + octeto4;
     
+    //Comienza definición de mascara:
+    
     mascaracorta = parseInt(document.getElementById('mascaracorta').value);
     
     
@@ -68,52 +70,119 @@ function Calcular(){
         
     mascara1 = parseInt(mascarabininv1.substring(0, 8),2);
     
-        if(mascaracorta > 1) { 
+        if(mascaracorta >= 1) { 
     
         document.getElementById("mascara1").value = mascara1;
+        
         }
     
-        else {
         
-        var prueba1 = parseInt(document.getElementById('mascara1').value);
-        var prueba3 = prueba1.toString(2);
-        var prueba2 =("0000000" + prueba2).slice(-8);
-        var holamundo = parseInt(prueba2.substring(0,1))+parseInt           (prueba2.substring(1,2))+parseInt(prueba2.substring(2,3));
-        
-            console.log(prueba2);
-    }
-    
+
     /* document.getElementById("mascara2").value = 0;
     document.getElementById("mascara3").value = 0;
     document.getElementById("mascara4").value = 0;
     */
-        
     
-    if(mascara1 == 255){
+    //Numero en "mascara2"
+    
+    if(document.getElementById('mascara1').value == 255){
+        
+        if(mascaracorta >= 1){
         
         mascaracorta = mascaracorta - 8;    
         mascarabin2 = ("00000000" + "11111111111111111111111111111111").slice(0+mascaracorta, 8+mascaracorta);
         mascarabininv2 = mascarabin2.split("").reverse().join("");
         mascara2 = parseInt(mascarabininv2.substring(0, 8),2);
         document.getElementById("mascara2").value = mascara2;
-    }
-    else {
-        document.getElementById("mascara2").value = 0;
-    }
+        
+        console.log("Se ejecuta esto");
             
-    if(mascara2 == 255){                    
+        }
+        
+        else if (document.getElementById('mascara2').value == ""){
+        document.getElementById("mascara2").value = 0;
+        }
+        
+        
+    }
+        else {
+            document.getElementById("mascara2").value = 0;
+        }
+    
+    
+            
+    
+    //numero en "mascara3"
+    
+     if(document.getElementById('mascara2').value == 255){
+        
+        if(mascaracorta >= 1){
+        
         mascaracorta = mascaracorta - 8;    
         mascarabin3 = ("00000000" + "11111111111111111111111111111111").slice(0+mascaracorta, 8+mascaracorta);
         mascarabininv3 = mascarabin3.split("").reverse().join("");
         mascara3 = parseInt(mascarabininv3.substring(0, 8),2);
         document.getElementById("mascara3").value = mascara3;
         
+        console.log("Se ejecuta esto para mascara 3");
+            
+        }
+        
+        else if (document.getElementById('mascara3').value == ""){
+        document.getElementById("mascara3").value = 0;
+        }
+        
+
+    }
+        else {
+            document.getElementById("mascara3").value = 0;
+        }
+    
+ /*   if(mascara2 == 255){                    
+        mascaracorta = mascaracorta - 8;    
+        mascarabin3 = ("00000000" + "11111111111111111111111111111111").slice(0+mascaracorta, 8+mascaracorta);
+        mascarabininv3 = mascarabin3.split("").reverse().join("");
+        mascara3 = parseInt(mascarabininv3.substring(0, 8),2);
+        document.getElementById("mascara3").value = mascara3;
+        console.log("Esto se esta ejecutando")
+        
     }
     else {
         document.getElementById("mascara3").value = 0;
+        //console.log("Esto tambien")
+        
     }
     
-    if(mascara3 == 255){                    
+    */
+    
+    //numero en "mascara4"
+    
+     if(document.getElementById('mascara3').value == 255){
+        
+        if(mascaracorta >= 1){
+        
+        mascaracorta = mascaracorta - 8;    
+        mascarabin4 = ("00000000" + "11111111111111111111111111111111").slice(0+mascaracorta, 8+mascaracorta);
+        mascarabininv4 = mascarabin4.split("").reverse().join("");
+        mascara4 = parseInt(mascarabininv4.substring(0, 8),2);
+        document.getElementById("mascara4").value = mascara4;
+        
+        console.log("Se ejecuta esto para mascara 3");
+            
+        }
+        
+        else if (document.getElementById('mascara4').value == ""){
+        document.getElementById("mascara4").value = 0;
+        }
+        
+
+    }
+        else {
+            document.getElementById("mascara4").value = 0;
+        }
+    
+    
+ /*   if(mascara3 == 255){                    
         mascaracorta = mascaracorta - 8;    
         mascarabin4 = ("00000000" + "11111111111111111111111111111111").slice(0+mascaracorta, 8+mascaracorta);
         mascarabininv4 = mascarabin4.split("").reverse().join("");
@@ -124,6 +193,82 @@ function Calcular(){
     else {
         document.getElementById("mascara4").value = 0;
     }
+*/
+            //Comienza codigo para pasar decimales en dato# a binarios y sumarlos para sacar mascaracorta.
+                
+        var prueba1 = parseInt(document.getElementById('mascara1').value);
+        var prueba3 = prueba1.toString(2);
+        var prueba2 =("0000000" + prueba3).slice(-8);
+        var holamundo1 = 
+        parseInt(prueba2.substring(0,1))
+        +parseInt(prueba2.substring(1,2))
+        +parseInt(prueba2.substring(2,3))
+        +parseInt(prueba2.substring(3,4))
+        +parseInt(prueba2.substring(4,5))
+        +parseInt(prueba2.substring(5,6))
+        +parseInt(prueba2.substring(6,7))
+        +parseInt(prueba2.substring(7,8));
+            
+            // Segundo octeto
+        
+        var prueba1 = parseInt(document.getElementById('mascara2').value);
+        var prueba3 = prueba1.toString(2);
+        var prueba2 =("0000000" + prueba3).slice(-8);
+        var holamundo2 = 
+        parseInt(prueba2.substring(0,1))
+        +parseInt(prueba2.substring(1,2))
+        +parseInt(prueba2.substring(2,3))
+        +parseInt(prueba2.substring(3,4))
+        +parseInt(prueba2.substring(4,5))
+        +parseInt(prueba2.substring(5,6))
+        +parseInt(prueba2.substring(6,7))
+        +parseInt(prueba2.substring(7,8));
+            
+            //Tercer octeto
+            
+        var prueba1 = parseInt(document.getElementById('mascara3').value);
+        var prueba3 = prueba1.toString(2);
+        var prueba2 =("0000000" + prueba3).slice(-8);
+        var holamundo3 = 
+        parseInt(prueba2.substring(0,1))
+        +parseInt(prueba2.substring(1,2))
+        +parseInt(prueba2.substring(2,3))
+        +parseInt(prueba2.substring(3,4))
+        +parseInt(prueba2.substring(4,5))
+        +parseInt(prueba2.substring(5,6))
+        +parseInt(prueba2.substring(6,7))
+        +parseInt(prueba2.substring(7,8));
+            
+            //Cuarto octeto
+        
+        var prueba1 = parseInt(document.getElementById('mascara4').value);
+        var prueba3 = prueba1.toString(2);
+        var prueba2 =("0000000" + prueba3).slice(-8);
+        var holamundo4 = 
+        parseInt(prueba2.substring(0,1))
+        +parseInt(prueba2.substring(1,2))
+        +parseInt(prueba2.substring(2,3))
+        +parseInt(prueba2.substring(3,4))
+        +parseInt(prueba2.substring(4,5))
+        +parseInt(prueba2.substring(5,6))
+        +parseInt(prueba2.substring(6,7))
+        +parseInt(prueba2.substring(7,8));
+            
+        if (document.getElementById('mascara1').value == ""){
+            holamundo1 = 0;
+        }
+        if (document.getElementById('mascara2').value == ""){
+            holamundo2 = 0;
+        }
+        if (document.getElementById('mascara3').value == ""){
+            holamundo3 = 0;
+        }
+        if (document.getElementById('mascara4').value == ""){
+            holamundo4 = 0;
+        }
+            
+         console.log(holamundo1+holamundo2+holamundo3+holamundo4);
+        
 
     
 };
