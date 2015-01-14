@@ -3,7 +3,7 @@ function Calcular(){
     //Definición de Variables:
     var dato1, dato2, dato3, dato4, clase,
         octeto1, octeto2, octeto3, octeto4,
-        mascara1, mascara2, mascara3, mascara4, 
+        mascara1, mascara2, mascara3, mascara4,
         mascarabin1, mascarabin2, mascarabin3, mascarabin4,
         mascarabininv1, mascarabininv2, mascarabininv3, mascarabininv4;
     
@@ -62,22 +62,32 @@ function Calcular(){
     mascaracorta = parseInt(document.getElementById('mascaracorta').value);
     
     
-    
     mascarabin1 = ("00000000" + "11111111111111111111111111111111").slice(0+mascaracorta, 8+mascaracorta);   
-    
-    //console.log(mascarabin1);
     
     mascarabininv1 = mascarabin1.split("").reverse().join("");
         
     mascara1 = parseInt(mascarabininv1.substring(0, 8),2);
-    document.getElementById("mascara1").value = mascara1;
     
-    //console.log(mascara1);
+        if(mascaracorta > 1) { 
+    
+        document.getElementById("mascara1").value = mascara1;
+        }
+    
+        else {
+        
+        var prueba1 = parseInt(document.getElementById('mascara1').value);
+        var prueba3 = prueba1.toString(2);
+        var prueba2 =("0000000" + prueba2).slice(-8);
+        var holamundo = parseInt(prueba2.substring(0,1))+parseInt           (prueba2.substring(1,2))+parseInt(prueba2.substring(2,3));
+        
+            console.log(prueba2);
+    }
     
     /* document.getElementById("mascara2").value = 0;
     document.getElementById("mascara3").value = 0;
     document.getElementById("mascara4").value = 0;
     */
+        
     
     if(mascara1 == 255){
         
@@ -114,4 +124,6 @@ function Calcular(){
     else {
         document.getElementById("mascara4").value = 0;
     }
+
+    
 };
