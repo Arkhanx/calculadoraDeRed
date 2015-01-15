@@ -20,7 +20,7 @@ background-color: #333;
 .decimal p {
     
     color: #fff;
-    font-size: 2em;
+    font-size: 1.3em;
     word-spacing: 0.5em;
 }
 
@@ -86,3 +86,35 @@ background-color: #333;
 }
 
 /* Fin de estilo para botones */
+
+.mascara {
+    
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 1em;
+}
+
+.mascara input {
+    text-align: center;
+    border-color: #00721f;
+    width: 4em;
+    
+}
+
+.mascara p {
+    
+    color: #fff;
+    font-size: 1.3em;
+    word-spacing: 0.5em;
+}
+
+.mascaracorta {
+ 
+    display: inline-block;
+}
+
+.barrita {
+     
+    color: white;
+}
