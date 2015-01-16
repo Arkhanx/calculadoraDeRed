@@ -1,18 +1,15 @@
-var dato1, dato2, dato3, dato4, clase,
+var comprueba, 
+    dato1, dato2, dato3, dato4, clase,
     octeto1, octeto2, octeto3, octeto4,
     mascara1, mascara2, mascara3, mascara4,
     mascarabin1, mascarabin2, mascarabin3, mascarabin4,
     mascarabininv1, mascarabininv2, mascarabininv3, mascarabininv4;
-    
 
+comprueba = 0;
 
+function pruebaCambio(){comprueba = 1;}
 
 function Calcular(){
-    
-function deprueba(){
-    console.log("Hola cosa");
-};
-    
     
     //Definición de Variables:
     /*Tomamos lo datos de los Inputs, en las variables octeto# y las convertimos 
@@ -21,7 +18,7 @@ function deprueba(){
     dato2 = parseInt(document.getElementById('decimal2').value);
     dato3 = parseInt(document.getElementById('decimal3').value);
     dato4 = parseInt(document.getElementById('decimal4').value);
-    
+
     //Convertimos los decimales en dato# a binario con toString(base2):
     octeto1 = dato1.toString(2);
     octeto2 = dato2.toString(2);
@@ -48,21 +45,73 @@ function deprueba(){
     convertidos a binario: */
     document.getElementById("resultado").innerHTML = octeto1+" - "+octeto2+" - "+octeto3+" - "+octeto4;
     
-};
-    
-    /*---------------------------------Comienza definición de mascara------------------------------------------*/
-    
-    
 
-function Probandoloco2(){
+    /*---------------------------------Comienza definición de mascara------------------------------------------*/
 
     //Mascara corta es igual al dato introducido en el input "mascaracorta"
     mascaracorta = parseInt(document.getElementById('mascaracorta').value);
     
-     
-        
-  
     
+    if(comprueba == 0) {
+        
+        var valores = document.getElementById('mascara1').value
+            
+        if     (document.getElementById('mascara1').value == 128) {document.getElementById('mascaracorta').value = 1;}
+        else if(document.getElementById('mascara1').value == 192) {document.getElementById('mascaracorta').value = 2;}
+        else if(document.getElementById('mascara1').value == 224) {document.getElementById('mascaracorta').value = 3;}
+        else if(document.getElementById('mascara1').value == 240) {document.getElementById('mascaracorta').value = 4;}
+        else if(document.getElementById('mascara1').value == 248) {document.getElementById('mascaracorta').value = 5;}
+        else if(document.getElementById('mascara1').value == 252) {document.getElementById('mascaracorta').value = 6;}
+        else if(document.getElementById('mascara1').value == 254) {document.getElementById('mascaracorta').value = 7;}
+        else if(document.getElementById('mascara1').value == 255) {document.getElementById('mascaracorta').value = 8;}
+        else   {document.getElementById('mascaracorta').value = "Error"};
+    
+    
+    if(document.getElementById('mascara1').value == 255) {
+        
+        if     (document.getElementById('mascara2').value == 128) {document.getElementById('mascaracorta').value = 9;}
+        else if(document.getElementById('mascara2').value == 192) {document.getElementById('mascaracorta').value = 10;}
+        else if(document.getElementById('mascara2').value == 224) {document.getElementById('mascaracorta').value = 11;}
+        else if(document.getElementById('mascara2').value == 240) {document.getElementById('mascaracorta').value = 12;}
+        else if(document.getElementById('mascara2').value == 248) {document.getElementById('mascaracorta').value = 13;}
+        else if(document.getElementById('mascara2').value == 252) {document.getElementById('mascaracorta').value = 14;}
+        else if(document.getElementById('mascara2').value == 254) {document.getElementById('mascaracorta').value = 15;}
+        else if(document.getElementById('mascara2').value == 255) {document.getElementById('mascaracorta').value = 16;}
+        else                                                      {document.getElementById('mascara2').value = 0;}
+    }
+        else   {document.getElementById('mascara2').value = 0;}
+    
+    if(document.getElementById('mascara2').value == 255) {
+        if     (document.getElementById('mascara3').value == 128) {document.getElementById('mascaracorta').value = 17;}
+        else if(document.getElementById('mascara3').value == 192) {document.getElementById('mascaracorta').value = 18;}
+        else if(document.getElementById('mascara3').value == 224) {document.getElementById('mascaracorta').value = 19;}
+        else if(document.getElementById('mascara3').value == 240) {document.getElementById('mascaracorta').value = 20;}
+        else if(document.getElementById('mascara3').value == 248) {document.getElementById('mascaracorta').value = 21;}
+        else if(document.getElementById('mascara3').value == 252) {document.getElementById('mascaracorta').value = 22;}
+        else if(document.getElementById('mascara3').value == 254) {document.getElementById('mascaracorta').value = 23;}
+        else if(document.getElementById('mascara3').value == 255) {document.getElementById('mascaracorta').value = 24;}
+        else                                                      {document.getElementById('mascara3').value = 0;}
+    }
+        else   {document.getElementById('mascara3').value = 0;}
+    
+    if(document.getElementById('mascara3').value == 255) {
+        if     (document.getElementById('mascara4').value == 128) {document.getElementById('mascaracorta').value = 25;}
+        else if(document.getElementById('mascara4').value == 192) {document.getElementById('mascaracorta').value = 26;}
+        else if(document.getElementById('mascara4').value == 224) {document.getElementById('mascaracorta').value = 27;}
+        else if(document.getElementById('mascara4').value == 240) {document.getElementById('mascaracorta').value = 28;}
+        else if(document.getElementById('mascara4').value == 248) {document.getElementById('mascaracorta').value = 29;}
+        else if(document.getElementById('mascara4').value == 252) {document.getElementById('mascaracorta').value = 30;}
+        else if(document.getElementById('mascara4').value == 254) {document.getElementById('mascaracorta').value = 31;}
+        else if(document.getElementById('mascara4').value == 255) {document.getElementById('mascaracorta').value = 32;}
+        else                                                      {document.getElementById('mascara4').value = 0;}
+    }
+        else   {document.getElementById('mascara4').value = 0;}
+    
+    }
+
+
+    
+     if(comprueba == 1){       
 
     /*"mascarabin1" es igual a 00000000 inicialmente, pero si mascaracorta = 1 entonces un cero se mueve hacia
     la izquieda y desaparece al tiempo que aparece un uno desde la derecha osea quedaria 00000001*/ 
@@ -137,98 +186,61 @@ function Probandoloco2(){
     }
     else {document.getElementById("mascara4").value = 0;}
     
-    //Reseteamos "mascaracorta" a 0, para poder escribirle el resultado utilizando "ahagamoslo"
-    //  document.getElementById("mascaracorta").value = 0;
-   
-};
+        if     (document.getElementById('mascara1').value == 128) {document.getElementById('mascaracorta').value = 1;}
+        else if(document.getElementById('mascara1').value == 192) {document.getElementById('mascaracorta').value = 2;}
+        else if(document.getElementById('mascara1').value == 224) {document.getElementById('mascaracorta').value = 3;}
+        else if(document.getElementById('mascara1').value == 240) {document.getElementById('mascaracorta').value = 4;}
+        else if(document.getElementById('mascara1').value == 248) {document.getElementById('mascaracorta').value = 5;}
+        else if(document.getElementById('mascara1').value == 252) {document.getElementById('mascaracorta').value = 6;}
+        else if(document.getElementById('mascara1').value == 254) {document.getElementById('mascaracorta').value = 7;}
+        else if(document.getElementById('mascara1').value == 255) {document.getElementById('mascaracorta').value = 8;}
+        else   {document.getElementById('mascaracorta').value = "Error"};
+    
+    
+        if     (document.getElementById('mascara1').value == 255) {
+            if     (document.getElementById('mascara2').value == 128) {document.getElementById('mascaracorta').value = 9;}
+            else if(document.getElementById('mascara2').value == 192) {document.getElementById('mascaracorta').value = 10;}
+            else if(document.getElementById('mascara2').value == 224) {document.getElementById('mascaracorta').value = 11;}
+            else if(document.getElementById('mascara2').value == 240) {document.getElementById('mascaracorta').value = 12;}
+            else if(document.getElementById('mascara2').value == 248) {document.getElementById('mascaracorta').value = 13;}
+            else if(document.getElementById('mascara2').value == 252) {document.getElementById('mascaracorta').value = 14;}
+            else if(document.getElementById('mascara2').value == 254) {document.getElementById('mascaracorta').value = 15;}
+            else if(document.getElementById('mascara2').value == 255) {document.getElementById('mascaracorta').value = 16;}
+        }
+        else   {document.getElementById('mascara2').value = 0;}
+        
+        if(document.getElementById('mascara2').value == 255) {
+            if     (document.getElementById('mascara3').value == 128) {document.getElementById('mascaracorta').value = 17;}
+            else if(document.getElementById('mascara3').value == 192) {document.getElementById('mascaracorta').value = 18;}
+            else if(document.getElementById('mascara3').value == 224) {document.getElementById('mascaracorta').value = 19;}
+            else if(document.getElementById('mascara3').value == 240) {document.getElementById('mascaracorta').value = 20;}
+            else if(document.getElementById('mascara3').value == 248) {document.getElementById('mascaracorta').value = 21;}
+            else if(document.getElementById('mascara3').value == 252) {document.getElementById('mascaracorta').value = 22;}
+            else if(document.getElementById('mascara3').value == 254) {document.getElementById('mascaracorta').value = 23;}
+            else if(document.getElementById('mascara3').value == 255) {document.getElementById('mascaracorta').value = 24;}
+        }
+        else   {document.getElementById('mascara3').value = 0;}
+         
+        if(document.getElementById('mascara3').value == 255) {
+            if     (document.getElementById('mascara4').value == 128) {document.getElementById('mascaracorta').value = 25;}
+            else if(document.getElementById('mascara4').value == 192) {document.getElementById('mascaracorta').value = 26;}
+            else if(document.getElementById('mascara4').value == 224) {document.getElementById('mascaracorta').value = 27;}
+            else if(document.getElementById('mascara4').value == 240) {document.getElementById('mascaracorta').value = 28;}
+            else if(document.getElementById('mascara4').value == 248) {document.getElementById('mascaracorta').value = 29;}
+            else if(document.getElementById('mascara4').value == 252) {document.getElementById('mascaracorta').value = 30;}
+            else if(document.getElementById('mascara4').value == 254) {document.getElementById('mascaracorta').value = 31;}
+            else if(document.getElementById('mascara4').value == 255) {document.getElementById('mascaracorta').value = 32;}
+        }
+        else   {document.getElementById('mascara4').value = 0;}
 
+     }
 
-
-function Probandoloco(){
-    
-    /*Convertimos los decimales introducidos en el input mascara1 a binario para luego sumar cada elemento de la cadena 
-    por separado, es decir, si input mascara1 = 192 entonces a binario 11000000 entonces 1+1+0+0+0+0+0+0 = 2*/
-    var prueba1 = parseInt(document.getElementById('mascara1').value);
-    var prueba3 = prueba1.toString(2);
-    var prueba2 =("0000000" + prueba3).slice(-8);
-    var holamundo1 = 
-    parseInt(prueba2.substring(0,1))
-    +parseInt(prueba2.substring(1,2))
-    +parseInt(prueba2.substring(2,3))
-    +parseInt(prueba2.substring(3,4))
-    +parseInt(prueba2.substring(4,5))
-    +parseInt(prueba2.substring(5,6))
-    +parseInt(prueba2.substring(6,7))
-    +parseInt(prueba2.substring(7,8));
-            
-    /*Convertimos los decimales introducidos en el input mascara2 a binario para luego sumar cada elemento de la cadena 
-    por separado, es decir, si input mascara2 = 192 entonces a binario 11000000 entonces 1+1+0+0+0+0+0+0 = 2*/    
-    var prueba1 = parseInt(document.getElementById('mascara2').value);
-    var prueba3 = prueba1.toString(2);
-    var prueba2 =("0000000" + prueba3).slice(-8);
-    var holamundo2 = 
-    parseInt(prueba2.substring(0,1))
-    +parseInt(prueba2.substring(1,2))
-    +parseInt(prueba2.substring(2,3))
-    +parseInt(prueba2.substring(3,4))
-    +parseInt(prueba2.substring(4,5))
-    +parseInt(prueba2.substring(5,6))
-    +parseInt(prueba2.substring(6,7))
-    +parseInt(prueba2.substring(7,8));
-            
-    /*Convertimos los decimales introducidos en el input mascara3 a binario para luego sumar cada elemento de la cadena 
-    por separado, es decir, si input mascara3 = 192 entonces a binario 11000000 entonces 1+1+0+0+0+0+0+0 = 2*/
-    var prueba1 = parseInt(document.getElementById('mascara3').value);
-    var prueba3 = prueba1.toString(2);
-    var prueba2 =("0000000" + prueba3).slice(-8);
-    var holamundo3 = 
-    parseInt(prueba2.substring(0,1))
-    +parseInt(prueba2.substring(1,2))
-    +parseInt(prueba2.substring(2,3))
-    +parseInt(prueba2.substring(3,4))
-    +parseInt(prueba2.substring(4,5))
-    +parseInt(prueba2.substring(5,6))
-    +parseInt(prueba2.substring(6,7))
-    +parseInt(prueba2.substring(7,8));
-            
-    /*Convertimos los decimales introducidos en el input mascara4 a binario para luego sumar cada elemento de la cadena 
-    por separado, es decir, si input mascara4 = 192 entonces a binario 11000000 entonces 1+1+0+0+0+0+0+0 = 2*/
-    var prueba1 = parseInt(document.getElementById('mascara4').value);
-    var prueba3 = prueba1.toString(2);
-    var prueba2 =("0000000" + prueba3).slice(-8);
-    var holamundo4 = 
-    parseInt(prueba2.substring(0,1))
-    +parseInt(prueba2.substring(1,2))
-    +parseInt(prueba2.substring(2,3))
-    +parseInt(prueba2.substring(3,4))
-    +parseInt(prueba2.substring(4,5))
-    +parseInt(prueba2.substring(5,6))
-    +parseInt(prueba2.substring(6,7))
-    +parseInt(prueba2.substring(7,8));
-    
-    if (document.getElementById('mascara1').value == ""){holamundo1 = 0;}
-    if (document.getElementById('mascara2').value == ""){holamundo2 = 0;}
-    if (document.getElementById('mascara3').value == ""){holamundo3 = 0;}
-    if (document.getElementById('mascara4').value == ""){holamundo4 = 0;}
-    
-//if (ahagamoslo != document.getElementById('mascaracorta').value) {
-    
+        
+         
+        comprueba = 0;
+    //Intentar hacer intangible el resultado en mascaracorta, quelo vea el susuario pero que no sea real
 
     
-            
-    var ahagamoslo = holamundo1+holamundo2+holamundo3+holamundo4;
-    
-     
-    /*if(ahagamoslo != document.getElementById('mascaracorta').value){
-    
-        document.getElementById('mascaracorta').value = 0;
-    
-    }*/
-    console.log(ahagamoslo);
-    document.getElementById("mascaracorta").value = ahagamoslo;
-    
-    console.log(mascaracorta);
-//}
-      
+       // document.getElementById("mascaracorta").value = "";
 };
 
