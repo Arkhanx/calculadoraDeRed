@@ -1,31 +1,47 @@
-var comprueba, 
+/*Definición de Variables:*/
+var comprueba,
     dato1, dato2, dato3, dato4, clase,
     octeto1, octeto2, octeto3, octeto4,
     mascara1, mascara2, mascara3, mascara4,
     mascarabin1, mascarabin2, mascarabin3, mascarabin4,
     mascarabininv1, mascarabininv2, mascarabininv3, mascarabininv4;
 
+
+/*Variable prueba inicialmente es 0*/
 comprueba = 0;
 
+/*Esta función se ejecuta si hay algún cambio en el input "mascaracorta" le asigna a la variable comprueba el valor 1
+si o hay nungún cambio en "mascaracorta" seguira siendo 0*/
 function pruebaCambio(){comprueba = 1;}
 
+/*Función principal, se ejecutara al hacer click en el boton*/
 function Calcular(){
     
-    //Definición de Variables:
-    /*Tomamos lo datos de los Inputs, en las variables octeto# y las convertimos 
-    a binario haciendo .toString con base 2: */    
+    /*Si el valor del input "decimal*" es mayor a 255 lo redondeara a 255*/
+    if(document.getElementById('decimal1').value>255){document.getElementById('decimal1').value=255;}
+    if(document.getElementById('decimal2').value>255){document.getElementById('decimal2').value=255;}
+    if(document.getElementById('decimal3').value>255){document.getElementById('decimal3').value=255;}
+    if(document.getElementById('decimal4').value>255){document.getElementById('decimal4').value=255;}
+    
+    /*Si input "decimal1" no es un numero entre 1 y 255 lo seteara a 10*/
+    if(document.getElementById('decimal1').value>=1&&document.getElementById('decimal1').value<=255){}
+    else{document.getElementById('decimal1').value = 10;}
+    
+    /*Si input "decimal1||2||3" no es un numero entre 1 y 255 lo seteara a 0*/
+    if(document.getElementById('decimal2').value>=1&&document.getElementById('decimal2').value<=255){}
+    else{document.getElementById('decimal2').value = 0;}
+    if(document.getElementById('decimal3').value>=1&&document.getElementById('decimal2').value<=255){}
+    else{document.getElementById('decimal3').value = 0;}
+    if(document.getElementById('decimal4').value>=1&&document.getElementById('decimal2').value<=255){}
+    else{document.getElementById('decimal4').value = 0;}
+
+    /*Tomamos los valores de los inputs, en las variables dato* */  
     dato1 = parseInt(document.getElementById('decimal1').value);
     dato2 = parseInt(document.getElementById('decimal2').value);
     dato3 = parseInt(document.getElementById('decimal3').value);
     dato4 = parseInt(document.getElementById('decimal4').value);
-
-    //Convertimos los decimales en dato# a binario con toString(base2):
-    octeto1 = dato1.toString(2);
-    octeto2 = dato2.toString(2);
-    octeto3 = dato3.toString(2);
-    octeto4 = dato4.toString(2);
     
-    //Sacamos la clase de red en base al numero introducido en el primer octeto:
+    /*Sacamos la clase de red en base al numero almacenado en el primer dato*/
     if      (dato1 >= 1 && dato1 <= 126){document.getElementById("claseDeRed").innerHTML = "Clase A";}
     else if (dato1 >= 128 && dato1 <= 191){document.getElementById("claseDeRed").innerHTML = "Clase B";}
     else if (dato1 >= 192 && dato1 <= 223){document.getElementById("claseDeRed").innerHTML = "Clase C";}
@@ -33,6 +49,11 @@ function Calcular(){
     else if (dato1 >= 240 && dato1 <= 255){document.getElementById("claseDeRed").innerHTML = "Clase E";}
     else    {document.getElementById("claseDeRed").innerHTML = "Error de clase de Red";}
     
+    /*Convertimos los decimales almacenados en dato* a binario con toString(base2)*/
+    octeto1 = dato1.toString(2);
+    octeto2 = dato2.toString(2);
+    octeto3 = dato3.toString(2);
+    octeto4 = dato4.toString(2);
     
     /*Le añadimos 7 ceros por delante al resultado de octeto# y mostramos solo los 8 
     primeros digitos de izquierda a derecha, osea si octeto1 es igual a 101 entonces 
@@ -48,13 +69,16 @@ function Calcular(){
     
 
     /*---------------------------------Comienza definición de mascara------------------------------------------*/
-
+    
+    
+    
     //Mascara corta es igual al dato introducido en el input "mascaracorta"
     mascaracorta = parseInt(document.getElementById('mascaracorta').value);
     
-    
+        
        if(comprueba == 0) { 
-
+           
+     
 
                 if      (dato1 >= 1 && dato1 <= 126){
                     document.getElementById('mascara1').value = 255;
@@ -75,53 +99,55 @@ function Calcular(){
     
     if(comprueba == 0) {
         
+        
+        
         var valores = document.getElementById('mascara1').value
-            
+
         if     (document.getElementById('mascara1').value == 255) {document.getElementById('mascaracorta').value = 8;}
         else   {document.getElementById('mascara1').value = 0;     document.getElementById('mascaracorta').value = 0;}
-    
-    
-    if(document.getElementById('mascara1').value == 255) {
-        
-        if     (document.getElementById('mascara2').value == 128) {document.getElementById('mascaracorta').value = 9;}
-        else if(document.getElementById('mascara2').value == 192) {document.getElementById('mascaracorta').value = 10;}
-        else if(document.getElementById('mascara2').value == 224) {document.getElementById('mascaracorta').value = 11;}
-        else if(document.getElementById('mascara2').value == 240) {document.getElementById('mascaracorta').value = 12;}
-        else if(document.getElementById('mascara2').value == 248) {document.getElementById('mascaracorta').value = 13;}
-        else if(document.getElementById('mascara2').value == 252) {document.getElementById('mascaracorta').value = 14;}
-        else if(document.getElementById('mascara2').value == 254) {document.getElementById('mascaracorta').value = 15;}
-        else if(document.getElementById('mascara2').value == 255) {document.getElementById('mascaracorta').value = 16;}
-        else                                                      {document.getElementById('mascara2').value = 0;}
+
+
+        if(document.getElementById('mascara1').value == 255) {
+
+            if     (document.getElementById('mascara2').value == 128) {document.getElementById('mascaracorta').value = 9;}
+            else if(document.getElementById('mascara2').value == 192) {document.getElementById('mascaracorta').value = 10;}
+            else if(document.getElementById('mascara2').value == 224) {document.getElementById('mascaracorta').value = 11;}
+            else if(document.getElementById('mascara2').value == 240) {document.getElementById('mascaracorta').value = 12;}
+            else if(document.getElementById('mascara2').value == 248) {document.getElementById('mascaracorta').value = 13;}
+            else if(document.getElementById('mascara2').value == 252) {document.getElementById('mascaracorta').value = 14;}
+            else if(document.getElementById('mascara2').value == 254) {document.getElementById('mascaracorta').value = 15;}
+            else if(document.getElementById('mascara2').value == 255) {document.getElementById('mascaracorta').value = 16;}
+            else                                                      {document.getElementById('mascara2').value = 0;}
+        }
+            else   {document.getElementById('mascara2').value = 0;}
+
+        if(document.getElementById('mascara2').value == 255) {
+            if     (document.getElementById('mascara3').value == 128) {document.getElementById('mascaracorta').value = 17;}
+            else if(document.getElementById('mascara3').value == 192) {document.getElementById('mascaracorta').value = 18;}
+            else if(document.getElementById('mascara3').value == 224) {document.getElementById('mascaracorta').value = 19;}
+            else if(document.getElementById('mascara3').value == 240) {document.getElementById('mascaracorta').value = 20;}
+            else if(document.getElementById('mascara3').value == 248) {document.getElementById('mascaracorta').value = 21;}
+            else if(document.getElementById('mascara3').value == 252) {document.getElementById('mascaracorta').value = 22;}
+            else if(document.getElementById('mascara3').value == 254) {document.getElementById('mascaracorta').value = 23;}
+            else if(document.getElementById('mascara3').value == 255) {document.getElementById('mascaracorta').value = 24;}
+            else                                                      {document.getElementById('mascara3').value = 0;}
+        }
+            else   {document.getElementById('mascara3').value = 0;}
+
+        if(document.getElementById('mascara3').value == 255) {
+            if     (document.getElementById('mascara4').value == 128) {document.getElementById('mascaracorta').value = 25;}
+            else if(document.getElementById('mascara4').value == 192) {document.getElementById('mascaracorta').value = 26;}
+            else if(document.getElementById('mascara4').value == 224) {document.getElementById('mascaracorta').value = 27;}
+            else if(document.getElementById('mascara4').value == 240) {document.getElementById('mascaracorta').value = 28;}
+            else if(document.getElementById('mascara4').value == 248) {document.getElementById('mascaracorta').value = 29;}
+            else if(document.getElementById('mascara4').value == 252) {document.getElementById('mascaracorta').value = 30;}
+            else                                                      {document.getElementById('mascara4').value = 0;}
+        }
+            else   {document.getElementById('mascara4').value = 0;}
+
     }
-        else   {document.getElementById('mascara2').value = 0;}
     
-    if(document.getElementById('mascara2').value == 255) {
-        if     (document.getElementById('mascara3').value == 128) {document.getElementById('mascaracorta').value = 17;}
-        else if(document.getElementById('mascara3').value == 192) {document.getElementById('mascaracorta').value = 18;}
-        else if(document.getElementById('mascara3').value == 224) {document.getElementById('mascaracorta').value = 19;}
-        else if(document.getElementById('mascara3').value == 240) {document.getElementById('mascaracorta').value = 20;}
-        else if(document.getElementById('mascara3').value == 248) {document.getElementById('mascaracorta').value = 21;}
-        else if(document.getElementById('mascara3').value == 252) {document.getElementById('mascaracorta').value = 22;}
-        else if(document.getElementById('mascara3').value == 254) {document.getElementById('mascaracorta').value = 23;}
-        else if(document.getElementById('mascara3').value == 255) {document.getElementById('mascaracorta').value = 24;}
-        else                                                      {document.getElementById('mascara3').value = 0;}
-    }
-        else   {document.getElementById('mascara3').value = 0;}
     
-    if(document.getElementById('mascara3').value == 255) {
-        if     (document.getElementById('mascara4').value == 128) {document.getElementById('mascaracorta').value = 25;}
-        else if(document.getElementById('mascara4').value == 192) {document.getElementById('mascaracorta').value = 26;}
-        else if(document.getElementById('mascara4').value == 224) {document.getElementById('mascaracorta').value = 27;}
-        else if(document.getElementById('mascara4').value == 240) {document.getElementById('mascaracorta').value = 28;}
-        else if(document.getElementById('mascara4').value == 248) {document.getElementById('mascaracorta').value = 29;}
-        else if(document.getElementById('mascara4').value == 252) {document.getElementById('mascaracorta').value = 30;}
-        else if(document.getElementById('mascara4').value == 254) {document.getElementById('mascaracorta').value = 31;}
-        else if(document.getElementById('mascara4').value == 255) {document.getElementById('mascaracorta').value = 32;}
-        else                                                      {document.getElementById('mascara4').value = 0;}
-    }
-        else   {document.getElementById('mascara4').value = 0;}
-    
-    }
 
 
      
@@ -201,11 +227,52 @@ function Calcular(){
             else if(document.getElementById('mascara4').value == ""){document.getElementById("mascara4").value = 0;}
         }
         else {document.getElementById("mascara4").value = 0;}
+        
+        
+        
+        
+        if      (dato1 >= 1 && dato1 <= 126){
+                    document.getElementById('mascara1').value = 255;
+                if(document.getElementById('mascaracorta').value < 8) {
+                    
+                   document.getElementById('mascaracorta').value = 8;
+                
+                }
+        }
+        //else {document.getElementById('decimal1').value = 10}
+                
+        
+                else if (dato1 >= 128 && dato1 <= 191){
+                    document.getElementById('mascara1').value = 255;
+                    document.getElementById('mascara2').value = 255;
+                    
+                    if(document.getElementById('mascaracorta').value < 16) {
+                    
+                   document.getElementById('mascaracorta').value = 16;
+                
+                }
+            }
+        
+        
+        
+                else if (dato1 >= 192 && dato1 <= 223){
+                    document.getElementById('mascara1').value = 255;
+                    document.getElementById('mascara2').value = 255;
+                    document.getElementById('mascara3').value = 255;
+                
+                if(document.getElementById('mascaracorta').value < 24){
+                 
+                    document.getElementById('mascaracorta').value = 24;
+                }
+        }
 
     }
+    
+
 
         
 
     comprueba = 0;
+    
 };
 
