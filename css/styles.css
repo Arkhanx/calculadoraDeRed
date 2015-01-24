@@ -1,7 +1,7 @@
 body {
-
-background-color: #333;
-
+    
+    background-color: #e3e3e3;
+    font-size: 16px;
 }
 
 .decimal {
@@ -9,112 +9,90 @@ background-color: #333;
     text-align: center;
     margin-right: auto;
     margin-left: auto;
-    margin-top: 1em;
+    margin-top: 10em;
+
 }
 
 .decimal input {
+    
     text-align: center;
-    border-color: white;
+    margin: -0.1%;
+    
 }
 
 .decimal p {
-    
+
     color: #fff;
     font-size: 1.3em;
-    word-spacing: 0.5em;
+
 }
 
-#titulo {
-    color: #fff;
-    text-align: center;
-    font-size: 4em;
-    text-shadow: 0px 0px 10px #0b52d9;
-    
+.form-control {
+
+  border-radius: 10px;
+
+}
+.inputizq {
+
+    border-right: none;
+    border-bottom-right-radius: 0%;
+    border-top-right-radius: 0%;
+
 }
 
-/* .boton {
-    margin-top: 1em;
-    display: block;
-    font-size: 20px;
-    color: #333;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    
-} */
+.inputcent {
 
-/* Comienza estilo para botones*/
+    border-left: none;
+    border-bottom-left-radius: 0%;
+    border-top-left-radius: 0%;
+    border-right: none;
+    border-bottom-right-radius: 0%;
+    border-top-right-radius: 0%;
 
-.button {
-    
-    border: 1px solid #dedede;
-    border-radius: 3px;
-    color: #555;
-    display: inline-block;
-    font: bold 12px/12px HelveticaNeue, Arial;
-    padding: 8px 11px;
-    text-decoration: none;
+
 }
 
-.button.white{
-    display: block;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    background: #f5f5f5;
-    border-color: #dedede #d8d8d8 #d3d3d3;
-    box-shadow: 0 1px 1px #eaeaea, inset 0 1px 0 #fbfbfb;
-    color: #555;
-    text-shadow: 0 1px 0 #fff;
-    background: -webkit-linear-gradient(#f9f9f9, #f0f0f0);
-    background: -o-linear-gradient(#f9f9f9, #f0f0f0);
-    background: linear-gradient(#f9f9f9, #f0f0f0);
-    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f9f9', endColorstr='#f0f0f0');
+.inputder {
+
+    border-left: none;
+    border-bottom-left-radius: 0%;
+    border-top-left-radius: 0%;
+
 }
 
-.button.white:hover{
-    background: #f4f4f4;
-    border-color: #c7c7c7 #c3c3c3 #bebebe;
-    box-shadow: 0 1px 1px #ebebeb, inset 0 1px 0 #f3f3f3;
-    text-shadow: 0 1px 0 #fdfdfd;
-    background: -moz-linear-gradient(top,  #efefef, #f8f8f8);
-    background: -webkit-linear-gradient(top,  #efefef, #f8f8f8);
-    background: -o-linear-gradient(top,  #efefef, #f8f8f8);
-    background: -ms-linear-gradient(top,  #efefef, #f8f8f8);
-    background: linear-gradient(top,  #efefef, #f8f8f8);
-    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#efefef', endColorstr='#f8f8f8');
+
+/*Let's place the label over the input*/
+
+.flp div {position: relative; margin-bottom: 30px;}
+
+.flp label {
+	width: 400px; display: block;
+	font: inherit; font-size: 1em; line-height: 24px;
+	/*fixed height for FF line height issue. 
+	height = 24(lineheight) + 10*2(padding) + 2(border)*/
+    border: 1px solid #999;
 }
 
-/* Fin de estilo para botones */
-
-.mascara {
-    
-    text-align: center;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 1em;
+.flp input {outline: none}
+.flp label {
+	position: absolute; left: 0; top: 0;
+	/*left/right padding will be 2px less, adjusted by padding on .ch*/
+	padding: 10px 8px;
+	border-color: transparent; color: #666;
+	cursor: text;
 }
 
-.mascara input {
-    text-align: center;
-    border-color: #00721f;
-    width: 4em;
-    
+/*label styles*/
+.ch {
+	display: block; float: left;
+	position: relative; /*for upward animation*/
+	background: white; 
 }
+.ch:first-child {padding-left: 2px;}
+.ch:last-child {padding-right: 2px;}
 
-.mascara p {
-    
-    color: #fff;
-    font-size: 1.3em;
-    word-spacing: 0.5em;
-}
-
-.mascaracorta {
- 
-    display: inline-block;
-}
-
-.barrita {
-     
-    color: white;
+/*active input label*/
+.focussed {
+	/*when any input is already focussed clicking on it(label) again won't do anything*/
+	pointer-events: none;
 }
