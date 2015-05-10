@@ -35,11 +35,11 @@ function Calcular(){
     dato3=parseInt(document.getElementById('decimal3').value);
     dato4=parseInt(document.getElementById('decimal4').value);
     /*Sacamos la clase de red en base al numero almacenado en el primer dato*/
-    if     (dato1>=1&&dato1<=126)  {document.getElementById("claseDeRed").innerHTML="Clase A";}
-    else if(dato1>=128&&dato1<=191){document.getElementById("claseDeRed").innerHTML="Clase B";}
-    else if(dato1>=192&&dato1<=223){document.getElementById("claseDeRed").innerHTML="Clase C";}
-    else if(dato1>=224&&dato1<=239){document.getElementById("claseDeRed").innerHTML="Clase D";}
-    else if(dato1>=240&&dato1<=255){document.getElementById("claseDeRed").innerHTML="Clase E";}
+    if     (dato1>=1&&dato1<=126)  {document.getElementById("claseDeRed").innerHTML="Clase de Red: A";}
+    else if(dato1>=128&&dato1<=191){document.getElementById("claseDeRed").innerHTML="Clase de Red: B";}
+    else if(dato1>=192&&dato1<=223){document.getElementById("claseDeRed").innerHTML="Clase de Red: C";}
+    else if(dato1>=224&&dato1<=239){document.getElementById("claseDeRed").innerHTML="Clase de Red: D";}
+    else if(dato1>=240&&dato1<=255){document.getElementById("claseDeRed").innerHTML="Clase de Red: E";}
     else                           {document.getElementById("claseDeRed").innerHTML = "Error de clase de Red";}
     /*Convertimos los decimales almacenados en dato* a binario con toString(base2)*/
     octeto1 = dato1.toString(2);
@@ -53,9 +53,9 @@ function Calcular(){
     octeto2=("0000000" + octeto2).slice(-8);
     octeto3=("0000000" + octeto3).slice(-8);
     octeto4=("0000000" + octeto4).slice(-8);
-    /* Escribe en el documento html en <p id="resultado"> el resultado de los numero 
+    /* Escribe en el documento html en <p id="resultado"> el resultado de los numeros 
     convertidos a binario: */
-    document.getElementById("resultado").innerHTML = octeto1+" - "+octeto2+" - "+octeto3+" - "+octeto4;
+    document.getElementById("ipBinario").innerHTML = "Dirección IP en Binario: "+octeto1+" - "+octeto2+" - "+octeto3+" - "+octeto4;
     /*---------------------------------Comienza definición de mascara------------------------------------------*/
     /*Mascara corta es igual al dato introducido en el input "mascaracorta"*/
     mascaracorta = parseInt(document.getElementById('mascaracorta').value);
@@ -207,5 +207,46 @@ function Calcular(){
     }
     /*Setea a 0 la variable "comprueba" para que comience en 0 cada vez que se ejecuta la funcion */
     comprueba = 0;
+    
+    var ipred = 32 - document.getElementById('mascaracorta').value;
+
+    var ipredinv = 32 - ipred;
+    
+    console.log(ipred);
+
+    var ipcompletabin = octeto1+octeto2+octeto3+octeto4;
+
+    console.log(ipcompletabin);
+
+    var ceros_red = ("00000000000000000000000000000000").slice(-ipred);
+
+    var unos_red = ("11111111111111111111111111111111").slice(-ipred);
+
+    var bin_red = (ipcompletabin).slice(0, ipredinv);
+
+    ipredbin = bin_red+ceros_red;
+
+    ipredbroadcastbin = bin_red+unos_red;
+
+    var octetoipbroadcast1 = parseInt(ipredbroadcastbin.substring(0,8),2);
+    var octetoipbroadcast2 = parseInt(ipredbroadcastbin.substring(8,16),2);
+    var octetoipbroadcast3 = parseInt(ipredbroadcastbin.substring(16,24),2);
+    var octetoipbroadcast4 = parseInt(ipredbroadcastbin.substring(24,32),2);
+
+
+    var octetoipred1 = parseInt(ipredbin.substring(0,8),2);
+    var octetoipred2 = parseInt(ipredbin.substring(8,16),2);
+    var octetoipred3 = parseInt(ipredbin.substring(16,24),2);
+    var octetoipred4 = parseInt(ipredbin.substring(24,32),2);
+
+    var ipRedFinal = (octetoipred1+" - "+octetoipred2+" - "+octetoipred3+" - "+octetoipred4);
+    
+    var ipBroadcastFinal = (octetoipbroadcast1+" - "+octetoipbroadcast2+" - "+octetoipbroadcast3+" - "+octetoipbroadcast4);
+
+    document.getElementById("dirDeRed").innerHTML="La IP de Red es: " + ipRedFinal;
+
+    document.getElementById("dirDeBroadcast").innerHTML="La IP de Broadcast es: " + ipBroadcastFinal;
+
+    
 };
 
