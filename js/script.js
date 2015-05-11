@@ -1,44 +1,11 @@
-$(".flp label").each(function(){
-	var sop = '<span class="ch">'; //span opening
-	var scl = '</span>'; //span closing
-	//split the label into single letters and inject span tags around them
-	$(this).html(sop + $(this).html().split("").join(scl+sop) + scl);
-	//to prevent space-only spans from collapsing
-	$(".ch:contains(' ')").html("&nbsp;");
-})
-
-var d;
-//animation time
-$(".flp input").focus(function(){
-	//calculate movement for .ch = half of input height
-	var tm = $(this).outerHeight()/2 *-1 + "px";
-	//label = next sibling of input
-	//to prevent multiple animation trigger by mistake we will use .stop() before animating any character and clear any animation queued by .delay()
-	$(this).next().addClass("focussed").children().stop(true).each(function(i){
-		d = i*50;//delay
-		$(this).delay(d).animate({top: tm}, 200, 'easeOutBack');
-	})
-})
-$(".flp input").blur(function(){
-	//animate the label down if content of the input is empty
-	if($(this).val() == "")
-	{
-		$(this).next().removeClass("focussed").children().stop(true).each(function(i){
-			d = i*50;
-			$(this).delay(d).animate({top: 0}, 500, 'easeInOutBack');
-		})
-	}
-})
-
-
-
 /*Definición de Variables:*/
 var comprueba,
     dato1, dato2, dato3, dato4, clase,
     octeto1, octeto2, octeto3, octeto4,
     mascara1, mascara2, mascara3, mascara4,
     mascarabin1, mascarabin2, mascarabin3, mascarabin4,
-    mascarabininv1, mascarabininv2, mascarabininv3, mascarabininv4;
+    mascarabininv1, mascarabininv2, mascarabininv3, mascarabininv4,
+    tipodered;
 /*Variable prueba inicialmente es 0*/
 comprueba=0;
 
@@ -68,10 +35,15 @@ function Calcular(){
     dato2=parseInt(document.getElementById('decimal2').value);
     dato3=parseInt(document.getElementById('decimal3').value);
     dato4=parseInt(document.getElementById('decimal4').value);
+
+    if (dato1==10 || dato1==172&&dato2>=16&&dato2<=31 || dato1==192&&dato2==168) {tipodered = " / Privada";}
+    //else if (dato1==172&&dato2>=16&&dato2<=31) {tipodered = " / Privada";}
+    else{tipodered = " / Publica";}
+
     /*Sacamos la clase de red en base al numero almacenado en el primer dato*/
-    if     (dato1>=1&&dato1<=126)  {document.getElementById("claseDeRed").innerHTML="Clase de Red: A";}
-    else if(dato1>=128&&dato1<=191){document.getElementById("claseDeRed").innerHTML="Clase de Red: B";}
-    else if(dato1>=192&&dato1<=223){document.getElementById("claseDeRed").innerHTML="Clase de Red: C";}
+    if     (dato1>=1&&dato1<=126)  {document.getElementById("claseDeRed").innerHTML="Clase de Red: A" + tipodered;}
+    else if(dato1>=128&&dato1<=191){document.getElementById("claseDeRed").innerHTML="Clase de Red: B" + tipodered;}
+    else if(dato1>=192&&dato1<=223){document.getElementById("claseDeRed").innerHTML="Clase de Red: C" + tipodered;}
     else if(dato1>=224&&dato1<=239){document.getElementById("claseDeRed").innerHTML="Clase de Red: D";}
     else if(dato1>=240&&dato1<=255){document.getElementById("claseDeRed").innerHTML="Clase de Red: E";}
     else                           {document.getElementById("claseDeRed").innerHTML = "Error de clase de Red";}
@@ -80,6 +52,7 @@ function Calcular(){
     octeto2 = dato2.toString(2);
     octeto3 = dato3.toString(2);
     octeto4 = dato4.toString(2);
+
     /*Le añadimos 7 ceros por delante al resultado de octeto* y mostramos solo los 8 
     primeros digitos de izquierda a derecha, osea si octeto1 es igual a 101 entonces 
     "0000000" + 101 = "0000000101" pero solo se mostrara "00000101", gracias a .slice(-8);*/
@@ -243,7 +216,6 @@ function Calcular(){
     comprueba = 0;
     
     var ipred = 32 - document.getElementById('mascaracorta').value;
-<<<<<<< HEAD
 
     var ipredinv = 32 - ipred;
     
@@ -281,16 +253,27 @@ function Calcular(){
     document.getElementById("dirDeRed").innerHTML="La IP de Red es: " + ipRedFinal;
 
     document.getElementById("dirDeBroadcast").innerHTML="La IP de Broadcast es: " + ipBroadcastFinal;
+ 
+ //Convertir Decimal de mascara a binario
 
-=======
+    mascara1=parseInt(document.getElementById('mascara1').value);
+    mascara2=parseInt(document.getElementById('mascara2').value);
+    mascara3=parseInt(document.getElementById('mascara3').value);
+    mascara4=parseInt(document.getElementById('mascara4').value);
     
-    console.log(ipred);
-    
-    var ipcompletabin = octeto1+octeto2+octeto3+octeto4;
-    
-    console.log(ipcompletabin);
-    
->>>>>>> 5f191d630234078c1251ad0870a10e5e7afe8742
+    mascarabin1 = mascara1.toString(2);
+    mascarabin2 = mascara2.toString(2);
+    mascarabin3 = mascara3.toString(2);
+    mascarabin4 = mascara4.toString(2);
+
+    mascarabin1=("0000000" + mascarabin1).slice(-8);
+    mascarabin2=("0000000" + mascarabin2).slice(-8);
+    mascarabin3=("0000000" + mascarabin3).slice(-8);
+    mascarabin4=("0000000" + mascarabin4).slice(-8);
+
+    var mascaraBinFinal = (mascarabin1+" - "+mascarabin2+" - "+mascarabin3+" - "+mascarabin4);
+
+    document.getElementById("mascaraBinario").innerHTML="La Mascara de Subred en Binario: " + mascaraBinFinal;
     
 };
 

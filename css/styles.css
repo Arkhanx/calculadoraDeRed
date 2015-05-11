@@ -1,104 +1,26 @@
-<<<<<<< HEAD
-.decimal {
 
-}
-=======
-body {
-    
-    background-color: #e3e3e3;
-    font-size: 16px;
+#ipBinario {
+
+	text-align: center;
 }
 
-.decimal {
-    
-    text-align: center;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 10em;
+#mascaraBinario {
 
-}
-
-.decimal input {
-    
-    text-align: center;
-    margin: -0.1%;
-    
-}
-
-.decimal p {
-
-    color: #fff;
-    font-size: 1.3em;
-
-}
-
-.form-control {
-
-  border-radius: 10px;
-
-}
-.inputizq {
-
-    border-right: none;
-    border-bottom-right-radius: 0%;
-    border-top-right-radius: 0%;
-
-}
-
-.inputcent {
-
-    border-left: none;
-    border-bottom-left-radius: 0%;
-    border-top-left-radius: 0%;
-    border-right: none;
-    border-bottom-right-radius: 0%;
-    border-top-right-radius: 0%;
-
-
-}
-
-.inputder {
-
-    border-left: none;
-    border-bottom-left-radius: 0%;
-    border-top-left-radius: 0%;
-
+	text-align: center;
 }
 
 
-/*Let's place the label over the input*/
+#claseDeRed {
 
-.flp div {position: relative; margin-bottom: 30px;}
-
-.flp label {
-	width: 400px; display: block;
-	font: inherit; font-size: 1em; line-height: 24px;
-	/*fixed height for FF line height issue. 
-	height = 24(lineheight) + 10*2(padding) + 2(border)*/
-    border: 1px solid #999;
+	text-align: center;
 }
 
-.flp input {outline: none}
-.flp label {
-	position: absolute; left: 0; top: 0;
-	/*left/right padding will be 2px less, adjusted by padding on .ch*/
-	padding: 10px 8px;
-	border-color: transparent; color: #666;
-	cursor: text;
+#dirDeRed {
+
+	text-align: center;
 }
 
-/*label styles*/
-.ch {
-	display: block; float: left;
-	position: relative; /*for upward animation*/
-	background: white; 
-}
-.ch:first-child {padding-left: 2px;}
-.ch:last-child {padding-right: 2px;}
+#dirDeBroadcast {
 
-/*active input label*/
-.focussed {
-	/*when any input is already focussed clicking on it(label) again won't do anything*/
-	pointer-events: none;
-}
->>>>>>> 5f191d630234078c1251ad0870a10e5e7afe8742
+	text-align: center;
+};
