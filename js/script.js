@@ -274,6 +274,18 @@ function Calcular(){
     var mascaraBinFinal = (mascarabin1+" - "+mascarabin2+" - "+mascarabin3+" - "+mascarabin4);
 
     document.getElementById("mascaraBinario").innerHTML="La Mascara de Subred en Binario: " + mascaraBinFinal;
+
+    //Calculamos la cantidad de host posibles en nuestra red, elevando el numero 2 a el numero de bits utilizados para host -2 (dir de red y broadcast)
+
+    var numerodeHost = Math.pow(2,ipred)-2;
+
+    document.getElementById("numerodeHost").innerHTML="El numero de host utilizables es: " + numerodeHost;
+
+    //Calculamos la cantidad de subredes posibles en nuestra red, elevando el numero 2 a el numero de bits disponiibles para red
+
+    var numerodeSubRed = Math.pow(2,ipredinv);
+
+    document.getElementById("numerodeSubRed").innerHTML="El numero de subredes posibles es: " + numerodeSubRed;
     
 };
 

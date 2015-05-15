@@ -11,7 +11,7 @@
     <header>
         <h1 id="titulo">CalculadoraDeRed</h1>
     </header>      
-    <input type= "button" value= "Calcular" id= "cosa" class="btn btn-primary" onclick="(Calcular())"> 
+     
     <div class="container">    
         <form action="" class="form-inline">
             <div class="decimal form-group">
@@ -22,12 +22,16 @@
             </div>
         </form>
 
+        <form action="" class="form-inline">
         <div class="mascara form-group">
-            <input type="text" id="mascara1" class="form-control" maxlength="3" placeholder="Mascara" value="">
-            <input type="text" id="mascara2" class="form-control" maxlength="3" placeholder="Mascara" value="">
-            <input type="text" id="mascara3" class="form-control" maxlength="3" placeholder="Mascara" value="">
-            <input type="text" id="mascara4" class="form-control" maxlength="3" placeholder="Mascara" value="">
+            <input type="text" id="mascara1" class="form-control text-center" maxlength="3" placeholder="Mascara" value="">
+            <input type="text" id="mascara2" class="form-control text-center" maxlength="3" placeholder="Mascara" value="">
+            <input type="text" id="mascara3" class="form-control text-center" maxlength="3" placeholder="Mascara" value="">
+            <input type="text" id="mascara4" class="form-control text-center" maxlength="3" placeholder="Mascara" value="">
         </div>
+        </form>
+    
+
         <div class="form-group">
             <div class="input-group">
             <div class="input-group-addon">CRDI</div>
@@ -37,11 +41,18 @@
             </div>
         </div>
     </div>
+
+    <input type= "button" value= "Calcular" id="cosa" class="btn btn-primary" onclick="(Calcular())">
+
+    <div id="boton"></div>
+
     <div class=""> <p id="ipBinario"></p> </div>
     <div class=""> <p id="mascaraBinario"></p> </div>
     <div class=""> <p id="claseDeRed"></p> </div>
     <div class=""> <p id="dirDeRed"></p> </div>
     <div class=""> <p id="dirDeBroadcast"></p> </div>
+    <div class=""> <p id="numerodeHost"></p> </div>
+    <div class=""> <p id="numerodeSubRed"></p> </div>
 
 <script type="text/javascript" src="js/script.js" ></script>
 </body>

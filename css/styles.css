@@ -1,4 +1,6 @@
-
+#titulo{
+	text-align: center;
+}
 #ipBinario {
 
 	text-align: center;
@@ -21,6 +23,20 @@
 }
 
 #dirDeBroadcast {
+
+	text-align: center;
+}
+
+#cosa {
+
+	display: inline-block;
+	margin: 0 auto;
+}
+#numerodeHost {
+
+	text-align: center;
+}
+#numerodeSubRed {
 
 	text-align: center;
 };
