@@ -1,125 +1,185 @@
-/*Definición de Variables:*/
-var comprueba,
-    dato1, dato2, dato3, dato4, clase,
+/* ========================================================================
+ * Caculadora de Red
+ * Ever Fabian Caro Guerra
+ * ========================================================================*/
+
+//  Definicion de variables
+//================================================================
+  var comprueba,
+    decimal1, decimal2, decimal3, decimal4, clase,
     octeto1, octeto2, octeto3, octeto4,
     mascara1, mascara2, mascara3, mascara4,
     mascarabin1, mascarabin2, mascarabin3, mascarabin4,
     mascarabininv1, mascarabininv2, mascarabininv3, mascarabininv4,
     tipodered;
-/*Variable prueba inicialmente es 0*/
+//================================================================
+
+
+//Variable prueba inicialmente es igual a 0
+//==========
 comprueba=0;
+//==========
 
-/*Esta función se ejecuta si hay algún cambio en el input "mascaracorta" le asigna a la variable comprueba el valor 1
-                        si o hay nungún cambio en "mascaracorta" seguira siendo 0*/
+/* Esta función se ejecuta si hay algún cambio en el input "mascaracorta" le asigna a la variable 
+   comprueba el valor 1 pero si no hay nungún cambio en "mascaracorta" seguira siendo 0.*/
+//====================================
 function pruebaCambio(){comprueba=1;}
+//===================================
 
-/*Función principal, se ejecutara al hacer click en el boton*/
+
+//Función principal, se ejecutara al hacer click en el boton "Calcular".
+//==================
 function Calcular(){
-    /*Si el valor del input "decimal*" es mayor a 255 lo redondeara a 255*/
-    if(document.getElementById('decimal1').value>255){document.getElementById('decimal1').value=255;}
-    if(document.getElementById('decimal2').value>255){document.getElementById('decimal2').value=255;}
-    if(document.getElementById('decimal3').value>255){document.getElementById('decimal3').value=255;}
-    if(document.getElementById('decimal4').value>255){document.getElementById('decimal4').value=255;}
-    /*Si input "decimal1" no es un numero entre 1 y 255 lo seteara a 10*/
-    if(document.getElementById('decimal1').value>=1&&document.getElementById('decimal1').value<=255){}
-    else{document.getElementById('decimal1').value=10;}
-    /*Si input "decimal1||2||3" no es un numero entre 1 y 255 lo seteara a 0*/
-    if(document.getElementById('decimal2').value>=1&&document.getElementById('decimal2').value<=255){}
-    else{document.getElementById('decimal2').value=0;}
-    if(document.getElementById('decimal3').value>=1&&document.getElementById('decimal2').value<=255){}
-    else{document.getElementById('decimal3').value=0;}
-    if(document.getElementById('decimal4').value>=1&&document.getElementById('decimal2').value<=255){}
-    else{document.getElementById('decimal4').value=0;}
-    /*Tomamos los valores de los inputs, en las variables dato* */  
-    dato1=parseInt(document.getElementById('decimal1').value);
-    dato2=parseInt(document.getElementById('decimal2').value);
-    dato3=parseInt(document.getElementById('decimal3').value);
-    dato4=parseInt(document.getElementById('decimal4').value);
 
-    if (dato1==10 || dato1==172&&dato2>=16&&dato2<=31 || dato1==192&&dato2==168) {tipodered = " / Privada";}
-    //else if (dato1==172&&dato2>=16&&dato2<=31) {tipodered = " / Privada";}
+                        //--------------------Todo lo referente a la IP-------------------------\\
+    
+
+    //Función util para utilizar en todos los "if".
+    //===========================================================================================================
+    function ifmultiples(nombreuno, valoruno, nombredos, valordos){
+        if(document.getElementById(nombreuno).value>valoruno){document.getElementById(nombredos).value=valordos;}
+    }
+    //===========================================================================================================
+
+    //Si el valor del input "decimal*" es mayor a 255 lo redondeara a 255.
+    //============================================
+    ifmultiples("decimal1", 255, "decimal1", 255);
+    ifmultiples("decimal2", 255, "decimal2", 255);
+    ifmultiples("decimal3", 255, "decimal3", 255);
+    ifmultiples("decimal4", 255, "decimal4", 255);
+    //============================================
+
+    //Función para setear cada decimal cuando no este entre 1 y 255.
+    //============================================================================================
+    function seteoacero(nombre, valor){
+        if(document.getElementById(nombre).value>=1&&document.getElementById(nombre).value<=255){}
+        else{document.getElementById(nombre).value=valor;}
+    }
+
+    //Si input "decimal1" no es un numero entre 1 y 255 lo seteara a 10.
+    //=========================
+    seteoacero("decimal1", 10);
+    //Si input "decimal2|3|4" no es un numero entre 1 y 255 lo seteara a 0.
+    //=========================
+    seteoacero("decimal2", 0);
+    seteoacero("decimal3", 0);
+    seteoacero("decimal4", 0);
+    //=========================
+    
+    //Tomamos los valores de los inputs decimal1|2|3|4, en las variables decimal1|2|3|4.
+    //========================================================
+    decimal1=parseInt(document.getElementById("decimal1").value);
+    decimal2=parseInt(document.getElementById("decimal2").value);
+    decimal3=parseInt(document.getElementById("decimal3").value);
+    decimal4=parseInt(document.getElementById("decimal4").value);
+    //========================================================
+
+    //Este "if" determina que según el dato en cada input "decimal" la calse de red es privada o publica.
+    //========================================================================================================================
+    if (decimal1==10 || decimal1==172&&decimal2>=16&&decimal2<=31 || decimal1==192&&decimal2==168) {tipodered = " / Privada";}
     else{tipodered = " / Publica";}
+    //========================================================================================================================
 
-    /*Sacamos la clase de red en base al numero almacenado en el primer dato*/
-    if     (dato1>=1&&dato1<=126)  {document.getElementById("claseDeRed").innerHTML="Clase de Red: A" + tipodered;}
-    else if(dato1>=128&&dato1<=191){document.getElementById("claseDeRed").innerHTML="Clase de Red: B" + tipodered;}
-    else if(dato1>=192&&dato1<=223){document.getElementById("claseDeRed").innerHTML="Clase de Red: C" + tipodered;}
-    else if(dato1>=224&&dato1<=239){document.getElementById("claseDeRed").innerHTML="Clase de Red: D";}
-    else if(dato1>=240&&dato1<=255){document.getElementById("claseDeRed").innerHTML="Clase de Red: E";}
-    else                           {document.getElementById("claseDeRed").innerHTML = "Error de clase de Red";}
-    /*Convertimos los decimales almacenados en dato* a binario con toString(base2)*/
-    octeto1 = dato1.toString(2);
-    octeto2 = dato2.toString(2);
-    octeto3 = dato3.toString(2);
-    octeto4 = dato4.toString(2);
+    //Determinamos la clase de red en base al numero almacenado en "decimal1".
+    //===================================================================================================================
+    if     (decimal1>=1&&decimal1<=126)  {document.getElementById("claseDeRed").innerHTML="Clase de Red: A" + tipodered;}
+    else if(decimal1>=128&&decimal1<=191){document.getElementById("claseDeRed").innerHTML="Clase de Red: B" + tipodered;}
+    else if(decimal1>=192&&decimal1<=223){document.getElementById("claseDeRed").innerHTML="Clase de Red: C" + tipodered;}
+    else if(decimal1>=224&&decimal1<=239){document.getElementById("claseDeRed").innerHTML="Clase de Red: D";}
+    else if(decimal1>=240&&decimal1<=255){document.getElementById("claseDeRed").innerHTML="Clase de Red: E";}
+    else                                 {document.getElementById("claseDeRed").innerHTML="Error de clase de Red";}
+    //===================================================================================================================
 
-    /*Le añadimos 7 ceros por delante al resultado de octeto* y mostramos solo los 8 
-    primeros digitos de izquierda a derecha, osea si octeto1 es igual a 101 entonces 
-    "0000000" + 101 = "0000000101" pero solo se mostrara "00000101", gracias a .slice(-8);*/
+    //Convertimos los decimales almacenados en decimal1|2|3|4 a binario con toString(base2).
+    //=============================
+    octeto1 = decimal1.toString(2);
+    octeto2 = decimal2.toString(2);
+    octeto3 = decimal3.toString(2);
+    octeto4 = decimal4.toString(2);
+    //=============================
+
+    
+    /*Le añadimos 7 ceros por delante al resultado de octeto1|2|3|4 y mostramos solo los 8 primeros digitos de izquierda a derecha, osea 
+      si octeto1 es igual a 101 entonces "0000000" + 101 = "0000000101" pero solo se mostrara "00000101", gracias a .slice(-8);*/
+    //======================================
     octeto1=("0000000" + octeto1).slice(-8);
     octeto2=("0000000" + octeto2).slice(-8);
     octeto3=("0000000" + octeto3).slice(-8);
     octeto4=("0000000" + octeto4).slice(-8);
-    /* Escribe en el documento html en <p id="resultado"> el resultado de los numeros 
-    convertidos a binario: */
+    //======================================
+
+    //Escribe en el documento html en <p id="ipBinario"> el resultado de los numeros convertidos a binario.
+    //=============================================================================================================================
     document.getElementById("ipBinario").innerHTML = "Dirección IP en Binario: "+octeto1+" - "+octeto2+" - "+octeto3+" - "+octeto4;
-    /*---------------------------------Comienza definición de mascara------------------------------------------*/
-    /*Mascara corta es igual al dato introducido en el input "mascaracorta"*/
+    //=============================================================================================================================
+
+
+
+
+                //---------------------------------Todo lo referente a la Mascara------------------------------------------\\
+
+
+    //Variable "mascaracorta" es igual al dato introducido en el input "mascaracorta".
+    //=====================================================================
     mascaracorta = parseInt(document.getElementById('mascaracorta').value);
-    /*Utilizo "comprueba" para ejecutar este if solo si no se hicieron cambios en el input "mascaracorta"*/
+    //=====================================================================
+
+    /*Utilizamos la variable "comprueba" para ejecutar este if solo si no se hicieron cambios en el input "mascaracorta",
+      ya que si no se hicieron cambios su valor debe ser igual a cero.*/
+    //===================================================================================================================
     if(comprueba==0){
-        /*Utilizo el valor de "dato1" para definir la mascara por defecto según la clase de red*/
-        if(dato1>=1&&dato1<=126){
-        document.getElementById('mascara1').value=255;
+        
+        //Utilizamos el valor de "decimal1" para definir la mascara por defecto según la clase de red.
+        //============================================
+        if(decimal1>=1&&decimal1<=126){
+        document.getElementById("mascara1").value=255;
         }
-        else if(dato1>=128&&dato1<=191){
-        document.getElementById('mascara1').value=255;
-        document.getElementById('mascara2').value=255;
+        else if(decimal1>=128&&decimal1<=191){
+        document.getElementById("mascara1").value=255;
+        document.getElementById("mascara2").value=255;
         }
-        else if(dato1>=192&&dato1<=223){
-        document.getElementById('mascara1').value=255;
-        document.getElementById('mascara2').value=255;
-        document.getElementById('mascara3').value=255;
+        else if(decimal1>=192&&decimal1<=223){
+        document.getElementById("mascara1").value=255;
+        document.getElementById("mascara2").value=255;
+        document.getElementById("mascara3").value=255;
         }
-        /*Si "mascara1" es igual a 255, "mascaracorta" sera 8 siempre*/
-        if(document.getElementById('mascara1').value==255){document.getElementById('mascaracorta').value=8;}
-        else{document.getElementById('mascara1').value=0;document.getElementById('mascaracorta').value=0;}
-        /*Si "mascara1" es igual a 255 el valor de "mascaracorta" se modificara dependiendo del valor de "mascara2"*/
-        if  (document.getElementById('mascara1').value==255){
-            if     (document.getElementById('mascara2').value==128){document.getElementById('mascaracorta').value=9;}
-            else if(document.getElementById('mascara2').value==192){document.getElementById('mascaracorta').value=10;}
-            else if(document.getElementById('mascara2').value==224){document.getElementById('mascaracorta').value=11;}
-            else if(document.getElementById('mascara2').value==240){document.getElementById('mascaracorta').value=12;}
-            else if(document.getElementById('mascara2').value==248){document.getElementById('mascaracorta').value=13;}
-            else if(document.getElementById('mascara2').value==252){document.getElementById('mascaracorta').value=14;}
-            else if(document.getElementById('mascara2').value==254){document.getElementById('mascaracorta').value=15;}
-            else if(document.getElementById('mascara2').value==255){document.getElementById('mascaracorta').value=16;}
-            else                                                   {document.getElementById('mascara2').value=0;}
+        //============================================
+
+        //Si "mascara1" es igual a 255, "mascaracorta" sera igual a ocho siempre.
+        //==================================================================================================
+        if(document.getElementById("mascara1").value==255){document.getElementById("mascaracorta").value=8;}
+        else                                              {document.getElementById("mascara1").value=0;
+                                                           document.getElementById("mascaracorta").value=0;}
+        //==================================================================================================
+
+        //Función para darle valor al input "mascaracorta" según lo introducido en los inputs "mascara1|2|3|4"
+        //======================================================================================================================
+        function mascaras(nombreuno, nombredos, value7, value8, valor1, valor2, valor3, valor4, valor5, valor6, valor7, valor8){
+            if  (document.getElementById(nombreuno).value==255){
+                if     (document.getElementById(nombredos).value==128){document.getElementById('mascaracorta').value=valor1;}
+                else if(document.getElementById(nombredos).value==192){document.getElementById('mascaracorta').value=valor2;}
+                else if(document.getElementById(nombredos).value==224){document.getElementById('mascaracorta').value=valor3;}
+                else if(document.getElementById(nombredos).value==240){document.getElementById('mascaracorta').value=valor4;}
+                else if(document.getElementById(nombredos).value==248){document.getElementById('mascaracorta').value=valor5;}
+                else if(document.getElementById(nombredos).value==252){document.getElementById('mascaracorta').value=valor6;}
+                else if(document.getElementById(nombredos).value==value7){document.getElementById('mascaracorta').value=valor7;}
+                else if(document.getElementById(nombredos).value==value8){document.getElementById('mascaracorta').value=valor8;}
+                else                                                     {document.getElementById(nombredos).value=0;}
+            }
+            //Limitamos las mascaras para setearlas a cero si son erroneas, por ejemplo no puede ser 255.128.255.0
+            //===============================================
+            else{document.getElementById(nombredos).value=0;}
         }
-        /*Si "mascara1" no es 255, "mascara2" siempre sera igual a 0*/
-        else{document.getElementById('mascara2').value=0;}
-        if  (document.getElementById('mascara2').value==255){
-            if     (document.getElementById('mascara3').value==128){document.getElementById('mascaracorta').value=17;}
-            else if(document.getElementById('mascara3').value==192){document.getElementById('mascaracorta').value=18;}
-            else if(document.getElementById('mascara3').value==224){document.getElementById('mascaracorta').value=19;}
-            else if(document.getElementById('mascara3').value==240){document.getElementById('mascaracorta').value=20;}
-            else if(document.getElementById('mascara3').value==248){document.getElementById('mascaracorta').value=21;}
-            else if(document.getElementById('mascara3').value==252){document.getElementById('mascaracorta').value=22;}
-            else if(document.getElementById('mascara3').value==254){document.getElementById('mascaracorta').value=23;}
-            else if(document.getElementById('mascara3').value==255){document.getElementById('mascaracorta').value=24;}
-            else                                                   {document.getElementById('mascara3').value=0;}
-        }
-        else{document.getElementById('mascara3').value=0;}
-        if  (document.getElementById('mascara3').value == 255){
-            if     (document.getElementById('mascara4').value==128){document.getElementById('mascaracorta').value=25;}
-            else if(document.getElementById('mascara4').value==192){document.getElementById('mascaracorta').value=26;}
-            else if(document.getElementById('mascara4').value==224){document.getElementById('mascaracorta').value=27;}
-            else if(document.getElementById('mascara4').value==240){document.getElementById('mascaracorta').value=28;}
-            else if(document.getElementById('mascara4').value==248){document.getElementById('mascaracorta').value=29;}
-            else if(document.getElementById('mascara4').value==252){document.getElementById('mascaracorta').value=30;}
-            else                                                   {document.getElementById('mascara4').value =0;}
-        }
-        else{document.getElementById('mascara4').value=0;}
+        //========================================================================================================================
+
+        /*Llamamos función "mascara" para setear "mascara2|3|4" respectivamente, en el caso del input "mascara4" dejamos 
+          los parametros "value7" y "value8" a "" (nada) ya que la mascara no puede ser 255.255.255.254 o 255.255.255.255*/
+        //=========================================================================
+        mascaras("mascara1", "mascara2", 254, 255, 9, 10, 11, 12, 13, 14, 15, 16);
+        mascaras("mascara2", "mascara3", 254, 255, 17, 18, 19, 20, 21, 22, 23, 24);
+        mascaras("mascara3", "mascara4", "", "", 25, 26, 27, 28, 29, 30, 14, 15);
+        //=========================================================================
+
     }
     /*Utilizo "comprueba" para ejecutar este if solo si se hicieron cambios en el input "mascaracorta"*/
     if(comprueba==1){       
@@ -184,26 +244,26 @@ function Calcular(){
             else if(document.getElementById('mascara4').value==""){document.getElementById("mascara4").value=0;}
         }
         else{document.getElementById("mascara4").value=0;}
-        /*Si "dato1" esta entre 1 y 126 (clase A), el valor del input "mascara1" sera igual a 255, si esto se cumple
+        /*Si "decimal1" esta entre 1 y 126 (clase A), el valor del input "mascara1" sera igual a 255, si esto se cumple
                 e input "mascaracorta" es menor a 8, entonces input "mascaracorta" sera igual a 8*/
-        if(dato1>=1&&dato1<=126){
+        if(decimal1>=1&&decimal1<=126){
             document.getElementById('mascara1').value=255;
             if(document.getElementById('mascaracorta').value<8){
                 document.getElementById('mascaracorta').value=8;
             }
         }
-        /*Si "dato1" esta entre 128 y 191 (clase B), el valor del input "mascara1" y "mascara2" sera igual a 255, si esto se
+        /*Si "decimal1" esta entre 128 y 191 (clase B), el valor del input "mascara1" y "mascara2" sera igual a 255, si esto se
                     cumple e input "mascaracorta" es menor a 16, entonces input "mascaracorta" sera igual a 16*/
-        else if(dato1>=128&&dato1<=191){
+        else if(decimal1>=128&&decimal1<=191){
             document.getElementById('mascara1').value=255;
             document.getElementById('mascara2').value=255;
             if(document.getElementById('mascaracorta').value<16){
                 document.getElementById('mascaracorta').value=16;        
             }
         }
-        /*Si "dato1" esta entre 192 y 223 (clase C), el valor del input "mascara1", "mascara2" y "mascara3" sera igual a 255, si
+        /*Si "decimal1" esta entre 192 y 223 (clase C), el valor del input "mascara1", "mascara2" y "mascara3" sera igual a 255, si
                 esto se cumple e input "mascaracorta" es menor a 24, entonces input "mascaracorta" sera igual a 24*/
-        else if(dato1>=192&&dato1<=223){
+        else if(decimal1>=192&&decimal1<=223){
             document.getElementById('mascara1').value=255;
             document.getElementById('mascara2').value=255;
             document.getElementById('mascara3').value=255;
