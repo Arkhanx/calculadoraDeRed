@@ -153,7 +153,7 @@ function Calcular(){
 
         //Función para darle valor al input "mascaracorta" según lo introducido en los inputs "mascara1|2|3|4"
         //======================================================================================================================
-        function mascaras(nombreuno, nombredos, value7, value8, valor1, valor2, valor3, valor4, valor5, valor6, valor7, valor8){
+        function mascaras(nombreuno, nombredos, valor1, valor2, valor3, valor4, valor5, valor6, valor7, valor8){
             if  (document.getElementById(nombreuno).value==255){
                 if     (document.getElementById(nombredos).value==128){document.getElementById('mascaracorta').value=valor1;}
                 else if(document.getElementById(nombredos).value==192){document.getElementById('mascaracorta').value=valor2;}
@@ -161,9 +161,9 @@ function Calcular(){
                 else if(document.getElementById(nombredos).value==240){document.getElementById('mascaracorta').value=valor4;}
                 else if(document.getElementById(nombredos).value==248){document.getElementById('mascaracorta').value=valor5;}
                 else if(document.getElementById(nombredos).value==252){document.getElementById('mascaracorta').value=valor6;}
-                else if(document.getElementById(nombredos).value==value7){document.getElementById('mascaracorta').value=valor7;}
-                else if(document.getElementById(nombredos).value==value8){document.getElementById('mascaracorta').value=valor8;}
-                else                                                     {document.getElementById(nombredos).value=0;}
+                else if(document.getElementById(nombredos).value==254){document.getElementById('mascaracorta').value=valor7;}
+                else if(document.getElementById(nombredos).value==255){document.getElementById('mascaracorta').value=valor8;}
+                else                                                  {document.getElementById(nombredos).value=0;}
             }
             //Limitamos las mascaras para setearlas a cero si son erroneas, por ejemplo no puede ser 255.128.255.0
             //===============================================
@@ -174,9 +174,12 @@ function Calcular(){
         /*Llamamos función "mascara" para setear "mascara2|3|4" respectivamente, en el caso del input "mascara4" dejamos 
           los parametros "value7" y "value8" a "" (nada) ya que la mascara no puede ser 255.255.255.254 o 255.255.255.255*/
         //=========================================================================
-        mascaras("mascara1", "mascara2", 254, 255, 9, 10, 11, 12, 13, 14, 15, 16);
-        mascaras("mascara2", "mascara3", 254, 255, 17, 18, 19, 20, 21, 22, 23, 24);
-        mascaras("mascara3", "mascara4", "", "", 25, 26, 27, 28, 29, 30, 14, 15);
+        mascaras("mascara1", "mascara2",  9, 10, 11, 12, 13, 14, 15, 16);
+        mascaras("mascara2", "mascara3", 17, 18, 19, 20, 21, 22, 23, 24);
+        mascaras("mascara3", "mascara4", 25, 26, 27, 28, 29, 30, 24, 24);
+        
+        if      (document.getElementById("mascara4").value==254){document.getElementById("mascara4").value=0;}
+        else if (document.getElementById("mascara4").value==255){document.getElementById("mascara4").value=0;}
         //=========================================================================
 
     }
@@ -235,9 +238,9 @@ function Calcular(){
                 }
                 //===================
                 
-                //Si mascaracorta es igual a "" osea a nada, si no se introduce nada en el input se le imprimira el valor 0.
+                //Si "mascara2" es igual a "" osea a nada, si no se introduce nada en el input se le imprimira el valor 0.
                 //==================================================================================================
-                else if(document.getElementById('mascara2').value==""){document.getElementById("mascara2").value=0;}
+                else if(document.getElementById(nombrecuatro).value==""){document.getElementById(nombrecuatro).value=0;}
                 //==================================================================================================
             }
             /*En cualquier caso si el numero en el input mascara1 no es igual a 255 entonces el input mascara2 sera siempre
