@@ -12,27 +12,50 @@
         <h1 id="titulo">CalculadoraDeRed</h1>
     </header>      
      
-    <div class="container">    
-        <form action="" class="form-inline">
-            <div class="decimal form-group">
-                <input type="text" id="decimal1" class="form-control text-center ip" placeholder="Decimal" maxlength="3">
-                <input type="text" id="decimal2" class="form-control text-center ip" placeholder="Decimal" maxlength="3">
-                <input type="text" id="decimal3" class="form-control text-center ip" placeholder="Decimal" maxlength="3">
-                <input type="text" id="decimal4" class="form-control text-center ip" placeholder="Decimal" maxlength="3">
-            </div>
-        </form>
+    <div id="boton" class="container">
+        <input type= "button" value= "Calcular" id="calcula" class="btn btn-primary col-md-2 col-xs-2 col-lg-2 col-sm-2 col-xs-offset-5" onclick="(Calcular())">
+    </div>
+     <section class="container">  
+            <form action="" class="row form-horizontal">
+               <p class="">Dirección IP</p>
+                <div class="form-group">
+                    <div class="col-md-3 col-sm-3 col-lg-3 col-xs-3">
+                        <input type="text" id="decimal1" class="form-control" placeholder="Decimal" maxlength="3">
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-lg-3 col-xs-3">
+                        <input type="text" id="decimal2" class="form-control" placeholder="Decimal" maxlength="3">
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-lg-3 col-xs-3">
+                        <input type="text" id="decimal3" class="form-control" placeholder="Decimal" maxlength="3">
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-lg-3 col-xs-3">
+                        <input type="text" id="decimal4" class="form-control" placeholder="Decimal" maxlength="3">
+                    </div>
+                </div>
+            </form>
+       
+        
+            <form action="" class="row form-horizontal">
+                    <p class="">Mascara de SubRed</p>
+                <div class="form-group">
+                    <div class="col-md-3 col-sm-3 col-lg-3 col-xs-3">
+                        <input type="text" id="mascara1" class="form-control" maxlength="3" placeholder="Mascara" value="">
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-lg-3 col-xs-3">
+                        <input type="text" id="mascara2" class="form-control" maxlength="3" placeholder="Mascara" value="">
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-lg-3 col-xs-3">
+                        <input type="text" id="mascara3" class="form-control" maxlength="3" placeholder="Mascara" value="">
+                    </div>
 
-        <form action="" class="form-inline">
-        <div class="mascara form-group">
-            <input type="text" id="mascara1" class="form-control text-center" maxlength="3" placeholder="Mascara" value="">
-            <input type="text" id="mascara2" class="form-control text-center" maxlength="3" placeholder="Mascara" value="">
-            <input type="text" id="mascara3" class="form-control text-center" maxlength="3" placeholder="Mascara" value="">
-            <input type="text" id="mascara4" class="form-control text-center" maxlength="3" placeholder="Mascara" value="">
-        </div>
-        </form>
-    
-
-        <div class="form-group">
+                    <div class="col-md-3 col-sm-3 col-lg-3 col-xs-3">
+                        <input type="text" id="mascara4" class="form-control" maxlength="3" placeholder="Mascara" value="">
+                    </div>
+                </div>
+            </form>
+    </section>
+        
+        <div class="form-group container">
             <div class="input-group">
             <div class="input-group-addon">CRDI</div>
             <div class="mascaracorta">
@@ -40,11 +63,8 @@
             </div>
             </div>
         </div>
-    </div>
-
-    <input type= "button" value= "Calcular" id="cosa" class="btn btn-primary" onclick="(Calcular())">
-
-    <div id="boton"></div>
+   
+    
 
     <div class=""> <p id="ipBinario"></p> </div>
     <div class=""> <p id="mascaraBinario"></p> </div>

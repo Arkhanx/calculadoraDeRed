@@ -27,11 +27,6 @@
 	text-align: center;
 }
 
-#cosa {
-
-	display: inline-block;
-	margin: 0 auto;
-}
 #numerodeHost {
 
 	text-align: center;
@@ -39,4 +34,12 @@
 #numerodeSubRed {
 
 	text-align: center;
-};
+}
+
+header {
+    color: #eee;
+}
+
+.label1 {
+    text-align: center;
+}

@@ -396,5 +396,6 @@ function Calcular(){
     document.getElementById("numerodeHost").innerHTML="El numero de host utilizables es: " + numerodeHost;
     document.getElementById("numerodeSubRed").innerHTML="El numero de subredes posibles es: " + numerodeSubRed;
     //==========================================================================================================
+        
 };
 
