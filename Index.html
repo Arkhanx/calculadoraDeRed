@@ -12,12 +12,13 @@
         <h1 id="titulo">CalculadoraDeRed</h1>
     </header>      
      
-    <div id="boton" class="container">
-        <input type= "button" value= "Calcular" id="calcula" class="btn btn-primary col-md-2 col-xs-2 col-lg-2 col-sm-2 col-xs-offset-5" onclick="(Calcular())">
+    <div class="container">
+        <input type= "button" value= "Calcular" id="calcula" class="btn btn-primary col-md-2 col-xs-2 col-lg-2 col-sm-2 col-xs-offset-5">
     </div>
+    
      <section class="container">  
             <form action="" class="row form-horizontal">
-               <p class="">Dirección IP</p>
+               <p class="">Dirección IP:</p>
                 <div class="form-group">
                     <div class="col-md-3 col-sm-3 col-lg-3 col-xs-3">
                         <input type="text" id="decimal1" class="form-control" placeholder="Decimal" maxlength="3">
@@ -36,7 +37,7 @@
        
         
             <form action="" class="row form-horizontal">
-                    <p class="">Mascara de SubRed</p>
+                    <p class="">Mascara de SubRed:</p>
                 <div class="form-group">
                     <div class="col-md-3 col-sm-3 col-lg-3 col-xs-3">
                         <input type="text" id="mascara1" class="form-control" maxlength="3" placeholder="Mascara" value="">
@@ -59,7 +60,7 @@
             <div class="input-group">
             <div class="input-group-addon">CRDI</div>
             <div class="mascaracorta">
-            <input type="text" id="mascaracorta" class="form-control"     maxlength="2" onchange="(pruebaCambio())">
+            <input type="text" id="mascaracorta" class="form-control" maxlength="2">
             </div>
             </div>
         </div>

@@ -402,3 +402,6 @@ function Calcular(){
         
 };
 
+document.getElementById("calcula").onclick = Calcular;
+document.getElementById("mascaracorta").onchange = pruebaCambio;
+
