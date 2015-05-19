@@ -37,9 +37,13 @@ function Calcular(){
     function seteoacero(nombre, valoruno, valordos){
 
         if(document.getElementById(nombre).value>=1&&document.getElementById(nombre).value<=255){
-            document.getElementById(nombre).style.boxShadow="0px 0px 8px 0px rgba(0, 141, 64,0.375)";
-            document.getElementById(nombre).style.border="1px solid rgba(0, 141, 64,0.375)";
+            document.getElementById(nombre).style.boxShadow="";
+            document.getElementById(nombre).style.border="";
             document.getElementById("error").innerHTML="";
+            if (document.getElementById("decimal1").value>255||
+                document.getElementById("decimal2").value>255||
+                document.getElementById("decimal3").value>255)
+            {document.getElementById("error").innerHTML="¡Hey, eso no puede ser mayor a 255!";}
         }
         else if (document.getElementById(nombre).value>255){
             document.getElementById(nombre).style.boxShadow="0px 0px 8px 0px rgba(255,0,0,0.375)";
@@ -49,13 +53,13 @@ function Calcular(){
         }
         else if (document.getElementById(nombre).value==0){
             document.getElementById(nombre).value=valoruno;
-            document.getElementById(nombre).style.boxShadow="0px 0px 8px 0px rgba(0, 141, 64,0.375)";
-            document.getElementById(nombre).style.border="1px solid rgba(0, 141, 64,0.375)";
+            document.getElementById(nombre).style.boxShadow="";
+            document.getElementById(nombre).style.border="";
         }
         else{
             document.getElementById(nombre).style.boxShadow="0px 0px 8px 0px rgba(255,0,0,0.375)";
             document.getElementById(nombre).style.border="1px solid rgba(255,0,0,0.375)";
-            document.getElementById("error").innerHTML="¡Esta claro que la IP no puede contener letras!";
+            document.getElementById("error").innerHTML="¡Esta claro que la IP no puede contener eso!";
         }
 
     }
@@ -69,26 +73,6 @@ function Calcular(){
     seteoacero("decimal3", 0, 255);
     seteoacero("decimal4", 0, 255);
     //=========================
-
-    //Función util para utilizar en todos los "if".
-    //===========================================================================================================
-    /*function ifmultiples(nombreuno, valoruno, nombredos, valordos){
-        if(document.getElementById(nombreuno).value>valoruno){
-        document.getElementById(nombreuno).style.boxShadow="0px 0px 8px 0px rgba(255,0,0,0.375)";
-        document.getElementById(nombreuno).style.border="1px solid rgba(255,0,0,0.375)";
-        document.getElementById(nombredos).value=valordos;
-        }
-    }
-    //===========================================================================================================
-
-    //Si el valor del input "decimal*" es mayor a 255 lo redondeara a 255.
-    //============================================
-    ifmultiples("decimal1", 255, "decimal1", 255);
-    ifmultiples("decimal2", 255, "decimal2", 255);
-    ifmultiples("decimal3", 255, "decimal3", 255);
-    ifmultiples("decimal4", 255, "decimal4", 255);
-    //============================================
-    */
 
     
     //Tomamos los valores de los inputs decimal1|2|3|4, en las variables decimal1|2|3|4.
@@ -107,12 +91,17 @@ function Calcular(){
 
     //Determinamos la clase de red en base al numero almacenado en "decimal1".
     //===================================================================================================================
-    if     (decimal1>=1&&decimal1<=126)  {document.getElementById("claseDeRed").innerHTML="Clase de Red: A" + tipodered;}
-    else if(decimal1>=128&&decimal1<=191){document.getElementById("claseDeRed").innerHTML="Clase de Red: B" + tipodered;}
-    else if(decimal1>=192&&decimal1<=223){document.getElementById("claseDeRed").innerHTML="Clase de Red: C" + tipodered;}
-    else if(decimal1>=224&&decimal1<=239){document.getElementById("claseDeRed").innerHTML="Clase de Red: D";}
-    else if(decimal1>=240&&decimal1<=255){document.getElementById("claseDeRed").innerHTML="Clase de Red: E";}
-    else                                 {document.getElementById("claseDeRed").innerHTML="Error de clase de Red";}
+    if     (decimal1>=1&&decimal1<=126)  {document.getElementById("claseDeRed").innerHTML="Clase de Red:";
+                                         document.getElementById("claseDeRed2").innerHTML= "A" + tipodered;}
+    else if(decimal1>=128&&decimal1<=191){document.getElementById("claseDeRed").innerHTML="Clase de Red:";
+                                         document.getElementById("claseDeRed2").innerHTML= "B" + tipodered;}
+    else if(decimal1>=192&&decimal1<=223){document.getElementById("claseDeRed").innerHTML="Clase de Red:";
+                                         document.getElementById("claseDeRed2").innerHTML= "C" + tipodered;}
+    else if(decimal1>=224&&decimal1<=239){document.getElementById("claseDeRed").innerHTML="Clase de Red:";
+                                         document.getElementById("claseDeRed2").innerHTML="D / Multicast";}
+    else if(decimal1>=240&&decimal1<=255){document.getElementById("claseDeRed").innerHTML="Clase de Red:";
+                                         document.getElementById("claseDeRed2").innerHTML="E / Experimental";}
+    else                                 {document.getElementById("claseDeRed2").innerHTML="Error de clase de Red";}
     //===================================================================================================================
 
     //Convertimos los decimales almacenados en decimal1|2|3|4 a binario con toString(base2).
@@ -135,7 +124,7 @@ function Calcular(){
 
     //Escribe en el documento html en <p id="ipBinario"> el resultado de los numeros convertidos a binario.
     //=============================================================================================================================
-    document.getElementById("ipBinario").innerHTML = "Dirección IP en Binario: ";
+    document.getElementById("ipBinario").innerHTML = "Dirección IP en Binario:";
     document.getElementById("ipBinario2").innerHTML = octeto1+" - "+octeto2+" - "+octeto3+" - "+octeto4;
     //=============================================================================================================================
 
@@ -420,11 +409,16 @@ function Calcular(){
     
     //Escribimos en el HTML el resultado de cada uno de estos apartados.
     //==========================================================================================================
-    document.getElementById("dirDeRed").innerHTML="La IP de Red es: " + ipRedFinal;
-    document.getElementById("dirDeBroadcast").innerHTML="La IP de Broadcast es: " + ipBroadcastFinal;
-    document.getElementById("mascaraBinario").innerHTML="La Mascara de Subred en Binario: " + mascaraBinFinal;
-    document.getElementById("numerodeHost").innerHTML="El numero de host utilizables es: " + numerodeHost;
-    document.getElementById("numerodeSubRed").innerHTML="El numero de subredes posibles es: " + numerodeSubRed;
+    document.getElementById("dirDeRed").innerHTML="La IP de Red es:";
+    document.getElementById("dirDeRed2").innerHTML=ipRedFinal;
+    document.getElementById("dirDeBroadcast").innerHTML="La IP de Broadcast es:";
+    document.getElementById("dirDeBroadcast2").innerHTML=ipBroadcastFinal;
+    document.getElementById("mascaraBinario").innerHTML="La Mascara de Subred en Binario:";
+    document.getElementById("mascaraBinario2").innerHTML= mascaraBinFinal;
+    document.getElementById("numerodeHost").innerHTML="El numero de host utilizables es:";
+    document.getElementById("numerodeHost2").innerHTML=numerodeHost;
+    document.getElementById("numerodeSubRed").innerHTML="El numero de subredes posibles es:";
+    document.getElementById("numerodeSubRed2").innerHTML=numerodeSubRed;
     //==========================================================================================================
         
 };
