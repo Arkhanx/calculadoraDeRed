@@ -32,11 +32,52 @@ function Calcular(){
 
                         //--------------------Todo lo referente a la IP-------------------------\\
     
+    //Función para setear cada decimal cuando no este entre 1 y 255.
+    //============================================================================================
+    function seteoacero(nombre, valoruno, valordos){
+
+        if(document.getElementById(nombre).value>=1&&document.getElementById(nombre).value<=255){
+            document.getElementById(nombre).style.boxShadow="0px 0px 8px 0px rgba(0, 141, 64,0.375)";
+            document.getElementById(nombre).style.border="1px solid rgba(0, 141, 64,0.375)";
+            document.getElementById("error").innerHTML="";
+        }
+        else if (document.getElementById(nombre).value>255){
+            document.getElementById(nombre).style.boxShadow="0px 0px 8px 0px rgba(255,0,0,0.375)";
+            document.getElementById(nombre).style.border="1px solid rgba(255,0,0,0.375)";
+            document.getElementById("error").innerHTML="¡Hey, eso no puede ser mayor a 255!";
+            //alert("¡Hey eso no puede ser mayor a 255!");
+        }
+        else if (document.getElementById(nombre).value==0){
+            document.getElementById(nombre).value=valoruno;
+            document.getElementById(nombre).style.boxShadow="0px 0px 8px 0px rgba(0, 141, 64,0.375)";
+            document.getElementById(nombre).style.border="1px solid rgba(0, 141, 64,0.375)";
+        }
+        else{
+            document.getElementById(nombre).style.boxShadow="0px 0px 8px 0px rgba(255,0,0,0.375)";
+            document.getElementById(nombre).style.border="1px solid rgba(255,0,0,0.375)";
+            document.getElementById("error").innerHTML="¡Esta claro que la IP no puede contener letras!";
+        }
+
+    }
+
+    //Si input "decimal1" no es un numero entre 1 y 255 lo seteara a 10.
+    //=========================
+    seteoacero("decimal1", 10, 255);
+    //Si input "decimal2|3|4" no es un numero entre 1 y 255 lo seteara a 0.
+    //=========================
+    seteoacero("decimal2", 0, 255);
+    seteoacero("decimal3", 0, 255);
+    seteoacero("decimal4", 0, 255);
+    //=========================
 
     //Función util para utilizar en todos los "if".
     //===========================================================================================================
-    function ifmultiples(nombreuno, valoruno, nombredos, valordos){
-        if(document.getElementById(nombreuno).value>valoruno){document.getElementById(nombredos).value=valordos;}
+    /*function ifmultiples(nombreuno, valoruno, nombredos, valordos){
+        if(document.getElementById(nombreuno).value>valoruno){
+        document.getElementById(nombreuno).style.boxShadow="0px 0px 8px 0px rgba(255,0,0,0.375)";
+        document.getElementById(nombreuno).style.border="1px solid rgba(255,0,0,0.375)";
+        document.getElementById(nombredos).value=valordos;
+        }
     }
     //===========================================================================================================
 
@@ -47,23 +88,8 @@ function Calcular(){
     ifmultiples("decimal3", 255, "decimal3", 255);
     ifmultiples("decimal4", 255, "decimal4", 255);
     //============================================
+    */
 
-    //Función para setear cada decimal cuando no este entre 1 y 255.
-    //============================================================================================
-    function seteoacero(nombre, valor){
-        if(document.getElementById(nombre).value>=1&&document.getElementById(nombre).value<=255){}
-        else{document.getElementById(nombre).value=valor;}
-    }
-
-    //Si input "decimal1" no es un numero entre 1 y 255 lo seteara a 10.
-    //=========================
-    seteoacero("decimal1", 10);
-    //Si input "decimal2|3|4" no es un numero entre 1 y 255 lo seteara a 0.
-    //=========================
-    seteoacero("decimal2", 0);
-    seteoacero("decimal3", 0);
-    seteoacero("decimal4", 0);
-    //=========================
     
     //Tomamos los valores de los inputs decimal1|2|3|4, en las variables decimal1|2|3|4.
     //========================================================
@@ -109,7 +135,8 @@ function Calcular(){
 
     //Escribe en el documento html en <p id="ipBinario"> el resultado de los numeros convertidos a binario.
     //=============================================================================================================================
-    document.getElementById("ipBinario").innerHTML = "Dirección IP en Binario: "+octeto1+" - "+octeto2+" - "+octeto3+" - "+octeto4;
+    document.getElementById("ipBinario").innerHTML = "Dirección IP en Binario: ";
+    document.getElementById("ipBinario2").innerHTML = octeto1+" - "+octeto2+" - "+octeto3+" - "+octeto4;
     //=============================================================================================================================
 
 
@@ -402,6 +429,8 @@ function Calcular(){
         
 };
 
+//document.getElementById("decimal1").style.boxShadow="0px 0px 8px 0px rgba(255,0,0,0.575)";
+//document.getElementById("decimal1").style.border="1px solid rgba(255,0,0,0.575)";
 document.getElementById("calcula").onclick = Calcular;
 document.getElementById("mascaracorta").onchange = pruebaCambio;
 

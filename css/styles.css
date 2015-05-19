@@ -4,6 +4,7 @@
 #ipBinario {
 
 	text-align: center;
+	color: rgba(0, 103, 156, 1);
 }
 
 #mascaraBinario {
@@ -35,6 +36,10 @@
 
 	text-align: center;
 }
+#ipBinario2 {
+
+	text-align: center;
+}
 
 header {
     color: #eee;
@@ -43,3 +48,10 @@ header {
 .label1 {
     text-align: center;
 }
+#error {
+
+	text-align: center;
+	color: rgba(175, 0, 0, 0.8);
+	font-size: 1.3em;
+}
+
