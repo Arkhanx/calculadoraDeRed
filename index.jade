@@ -1,0 +1,25 @@
+//output:index.html
+<!DOCTYPE html>
+html(lang="es")
+head
+  meta(charset="UTF-8")
+  meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
+  title CalculadoraDeRed
+  link(rel="stylesheet", href="css/bootstrap.min.css")
+  link(rel="stylesheet", href="css/estilos.css")
+  link(rel="stylesheet", href="css/fontello.css")
+body
+    header.header
+      h1.header__titulo calculadora
+        span dered
+    form.form-horizontal.col-xs-8.col-xs-offset-2.formulario.container(role="form", onsubmit="return noenviar();")
+      .form-group
+        input#ip.formulario__ip.form-control(type="text", pattern="((^|\\.)((25[0-5])|(2[0-4]\\d)|(1\\d\\d)|([1-9]?\\d))){4}$", placeholder="Ej: 192.168.1.1", required="required")
+      .form-group
+        input#mascara.formulario__mascara.form-control(type="text", pattern="((^|\\.)((25[0-5])|(2[0-4]\\d)|(1\\d\\d)|([1-9]?\\d))){4}$", placeholder="Ej: 255.255.255.0", required="required")      
+      .form-group
+        button#boton.boton.btn.icon-calc.center-block(type="submit") CALCULAR!
+          //- p.icon-calc.boton__icon
+    table#tabla.table.tabla
+    script(src="js/jquery.js")
+    script(src="js/script.js")
